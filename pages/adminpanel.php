@@ -486,10 +486,6 @@ if($logged)
 																			<span class="red">
 																				<span class="BigBoldText">R$ '.number_format($somaBalance, 2, ',', '.').'</span>
 																			</span>
-																			<small>
-																				<br>Saldo total de todas as doações realizadas no mês de '.date('F').'.<br>
-																				(Marco Oliveira possui 50% dos lucros, um total de <span class="red">R$ '.number_format(porcentagem_xn(50,$somaBalance), 2, ',', '.').'</span>
-																			</small>
 																		</td>				
 																	</tr>
 																</tbody>

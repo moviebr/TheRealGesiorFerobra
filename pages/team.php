@@ -9,8 +9,8 @@ $main_content .= "
 <table border=0 cellpadding=4 cellspacing=1 width=100%>
 <tr><td class=\"white\" align=\"center\" bgcolor=\"#505050\"><b>Contact Information</b></td></tr>
 <tr><td bgcolor=\"#D4C0A1\"><table border=\"0\" cellpadding=\"8\">
-<TR><TD>Company Website:</TD><TD>www.ferobraglobal.com</A></TD></TR>
-<TR><TD>Managing Director:</TD><TD>Marco Oliveira</TD></TR>
+<TR><TD>Site:</TD><TD>www.baiakthunder.com</A></TD></TR>
+<TR><TD>Managing Director:</TD><TD>Baiak Thunder Team</TD></TR>
 </td></tr></table></td></tr>";
 
 $main_content .= "<table border=0 cellpadding=4 cellspacing=1 width=100%>
@@ -43,7 +43,7 @@ $main_content .= "<br><br>";
 
 
 $main_content .= "<table border=0 cellspacing=1 cellpadding=4 width=100%>
-	<td class=\"white\" colspan=\"3\" align=\"left\" bgcolor=\"#505050\"><b>Ferobra Membres</b></td>
+	<td class=\"white\" colspan=\"3\" align=\"left\" bgcolor=\"#505050\"><b>Thunder Membres</b></td>
 	 <tr bgcolor=\"#D4C0A1\"><td width=\"80%\"><b>Name</b></td><td><b>Group</b></td></tr>";
 
 foreach($list as $i => $supporter)

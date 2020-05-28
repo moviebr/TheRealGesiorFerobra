@@ -1,5 +1,8 @@
 ## PREMIUM GESIOR BY RICARDO SOUZA 
 
+> Esse é um fork destinado a servidores 8.60 que utilizam as versões mais atuais do TFS/OTX.
+> Caso queira fazer uma correção faça um PR ou sugira alguma correção pelo issues.
+
 Confira o projeto em [Ferobra](https://ferobraglobal.com) 
 > **Lembrando que esse repositório não está com a ultima versão do Ferobra.**
 ### Entre em contato

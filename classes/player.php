@@ -47,6 +47,16 @@ class Player extends ObjectData
 		$this->load($name, self::LOADTYPE_NAME);
 	}
 
+	public function getExpForLevel($lv)
+    {
+        $lv--;
+        return ((50 * $lv * $lv * $lv) - (150 * $lv * $lv) + (400 * $lv)) / 3;
+    }
+    public function isItemHidden()
+    {
+        return (bool)$this->data['hide_char_items'];
+    }
+
 	public function save($forceInsert = false)
 	{
 		if(!isset($this->data['id']) || $forceInsert)

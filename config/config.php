@@ -2,6 +2,14 @@
 
 $config['site']['serverPath'] = "/usr/local/server/";
 
+# Configurações Novas by Movie
+$config['site']['ipServer'] = "127.0.0.1";
+$config['site']['director'] = "Ferobra Team";
+$config['site']['Outfits_path'] = $config['site']['serverPath'] . "data/XML/outfits.xml";
+$config['site']['Mounts_path'] = $config['site']['serverPath'] . "data/XML/mounts.xml";
+$config['site']['Itens_path'] = $config['site']['serverPath'] . "data/items/items.xml";
+$config['site']['Events_path'] = $config['site']['serverPath'] . "data/globalevents/globalevents.xml";
+$config['site']['Quests_path'] = $config['site']['serverPath'] . "data/XML/quests.xml";
 
 if ( ! function_exists('is_https'))
 {
@@ -68,7 +76,7 @@ $config['pagseguro']['tokentest'] = "";
 # Pagseguro configs
 $config['pagseguro']['email'] = "";
 $config['pagseguro']['token'] = "";
-$config['pagseguro']['produtoNome'] = 'Tibia Coins';
+$config['pagseguro']['produtoNome'] = 'Premium Points';
 $config['pagseguro']['urlRedirect'] =  $config['base_url'];
 $config['pagseguro']['urlNotification'] = $config['base_url'].'retpagseguro.php';
 $config['pagseguro']['offers'] = [
@@ -142,8 +150,8 @@ $config['site']['send_register_email'] = true;
 $config['site']['flash_client_enabled'] = false;
 
 # Create Character Options
-$config['site']['newchar_vocations'] = array(0 => 'Rook Sample');
-$config['site']['newchar_towns'] = array(6);
+$config['site']['newchar_vocations'] = array(0 => 'Rook Sample', 1 => 'Sorcerer Sample', 2 => 'Druid Sample', 3 => 'Paladin Sample', 4 => 'Knight Sample');
+$config['site']['newchar_towns'] = array(1);
 $config['site']['max_players_per_account'] = 7;
 
 # Emails Config

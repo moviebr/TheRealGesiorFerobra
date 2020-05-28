@@ -215,7 +215,7 @@ $main_content .= '
          </table>
       </div>
    </form>
-   <p><i>Skills displayed in the Highscores do not include any bonuses (loyalty, equipment etc.).</i></p>
+   <br/>
    <div class="TableContainer">
       <div class="CaptionContainer">
          <div class="CaptionInnerContainer">

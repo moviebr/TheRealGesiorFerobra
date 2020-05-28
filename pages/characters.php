@@ -123,7 +123,7 @@ if(!empty($name))
 			}
 				
 			$house = $SQL->query("SELECT * FROM `houses` WHERE `owner` = '".$player->getID()."'")->fetch();
-			if ( count( $house[0] ) > 0 )
+			if (count( $house[0]) > 0 )
 			{
 				$bgcolor = (($number_of_rows++ % 2 == 1) ?  $config['site']['darkborder'] : $config['site']['lightborder']);
 					$main_content .= '<TR BGCOLOR="'.$bgcolor.'"><TD>House:</TD><TD>';
@@ -208,6 +208,191 @@ if(!empty($name))
 				</tr>
 			</table>
 		</div></br>';
+
+	include_once "system/load.newclasses.php";
+        $verifica_item_id = function ($pid) use ($player) {
+            $kalabok = (array_keys($player->getItems()->getItem($pid)) === [] ? '' : array_keys($player->getItems()->getItem($pid))[0]);
+
+
+            $hidden = $player->isItemHidden();
+            if($hidden){
+                return '<td style="background-color: #d4c0a1; text-align: center;"><img src="./layouts/tibiacom/images/shop/items/hidden.png" class="CharItems"></td>';
+            }
+            if ($player->getItems()->getItem($pid)[$kalabok]->data['itemtype'] == NULL) {
+                return '<td style="background-color: #d4c0a1; text-align: center;"><img src="./layouts/tibiacom/images/shop/items/' . $pid . '.gif" class="CharItems"></td>';
+            } else {
+                $item_id = $player->getItems()->getItem($pid)[$kalabok]->data['itemtype'];
+                return '<td align="center" style="background-color: #D4C0A1;"><img src="./layouts/tibiacom/images/shop/items/' . $item_id . '.png" class="CharItems"></td>';
+            }
+        };
+        $player_info = $player->data;
+        $mount_id = $player->getStorage('10002011');
+        $cur_outfit = "<img style='text-decoration:none;margin: 0 0 0 -13px;' class='outfitImgsell2' src='http://outfits.ferobraglobal.com/animoutfit.php?id={$player_info['looktype']}&addons={$player_info['lookaddons']}&head={$player_info['lookhead']}&body={$player_info['lookbody']}&legs={$player_info['looklegs']}&feet={$player_info['lookfeet']}&mount=" . ($mount_id == NULL ? 0 : $mount_id) . "' alt='' name=''>";
+
+        $cur_exp = $player->getExperience();
+        $cur_lvl_exp = $player->getExpForLevel($player->getLevel());
+        $cur_real_exp = $cur_exp - $cur_lvl_exp;
+        $next_lvl_exp = $player->getExpForLevel($player->getLevel() + 1);
+        $next_lvl_exp_need = $next_lvl_exp - $cur_lvl_exp;
+
+        $next_lvl_percent = (float)round(((($cur_real_exp / $next_lvl_exp_need) * 100)), 2, PHP_ROUND_HALF_DOWN);
+        $next_lvl_percent = ($next_lvl_percent == 100 ? 99.99 : $next_lvl_percent);
+
+        $plus_content = '<div class="account_plus_information">';
+        $plus_content .= '
+            <div class="TableContentAndRightShadow1" style="background-image:url(./layouts/tibiacom/images/global/content/table-shadow-rm.gif);">
+                <div class="TableContainer1">
+                    <table class="Table3" width="100%" style="background-color: rgb(212, 192, 161);">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id="TransferConditionsToggleButton" class="BigToggleButton" onclick="CollapseTable(\'TransferConditionsContainer\'); $(\'#labelshow\').html($(\'#labelshow\').html() == \'show\' ? \'hide\' : \'show\');">
+                                    <link href="./layouts/tibiacom/css/bootstrap.css" rel="stylesheet" type="text/css">
+                                        <div id="Indicator_TransferConditionsContainer" class="CircleSymbolPlus" style="position: absolute; height: 18px; width: 18px; top: -8px; right: -8px; z-index: 99; cursor: pointer; background-image: url(./layouts/tibiacom/images/global/content/circle-symbol-plus.gif);"></div>
+                                        <i class="fa fa-info-circle" aria-hidden="true"></i> Click here to <span id="labelshow">show</span> <b>additional informations</b>.
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>';
+        $plus_content .= '
+            <div id="TransferConditionsContainer" style="display: none;">
+                <br/>
+                <table width="100%" style="padding: 5px 10px;">
+                    <tbody>
+                        <tr style="background-image: url(./layouts/tibiacom/images/global/content/scroll.gif)!important;">
+                            <td style="padding-right: 5px;">
+                                <table width="100%" class="Table30">
+                                    <tbody>
+                                        <tr bgcolor="#D4C0A1">
+                                            <td align="center" width="100px"><b>Current<br>outfit:</b></td>
+                                            <td>' . $cur_outfit . '</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="Table30" width="100%" style="border-spacing: 2px; padding: 0px;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="3" style="background-color: #D4C0A1; text-align: center;">
+                                                <b>Inventory:</b>
+                                            </td>
+                                        </tr>
+                                        <tr>';
+
+        $plus_content .= $verifica_item_id(2);
+        $plus_content .= $verifica_item_id(1);
+        $plus_content .= $verifica_item_id(3);
+        $plus_content .= '</tr><tr>';
+        $plus_content .= $verifica_item_id(6);
+        $plus_content .= $verifica_item_id(4);
+        $plus_content .= $verifica_item_id(5);
+        $plus_content .= '</tr><tr>';
+        $plus_content .= $verifica_item_id(9);
+        $plus_content .= $verifica_item_id(7);
+        $plus_content .= $verifica_item_id(10);
+        $plus_content .= '</tr><tr>';
+        $plus_content .= '               <td style="background-color: #D4C0A1; text-align: center;">
+                                                <b>Soul:</b><br>' . $player->getSoul() . '
+                                            </td>';
+        $plus_content .= $verifica_item_id(8);
+        $plus_content .= '
+                                            <td style="background-color: #D4C0A1; text-align: center;">
+                                                <b>Cap:</b><br>' . $player->getCapacity() . '
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>
+                                <table width="100%" class="Table30">
+                                    <tbody>
+                                        <tr bgcolor="#F1E0C6" style="text-align: center">
+                                            <td width="80px"><b>Health:</b></td>
+                                            <td>
+                                                ' . $player->getHealth() . '/' . $player->getHealthMax() . '(' . (round(($player->getHealth() / $player->getHealthMax()), 2, PHP_ROUND_HALF_UP) * 100) . '%)
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="' . (round(($player->getHealth() / $player->getHealthMax()), 2, PHP_ROUND_HALF_UP) * 100) . '" aria-valuemin="0" aria-valuemax="100" style=" width:' . (($player->getHealth() / $player->getHealthMax()) * 100) . '%;" ></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr bgcolor="#D4C0A1" style="text-align: center">
+                                            <td><b>Mana:</b></td>
+                                            <td>
+                                                ' . $player->getMana() . '/' . $player->getManaMax() . ' (' . (round(($player->getMana() / $player->getManaMax()), 2, PHP_ROUND_HALF_UP) * 100) . '%)
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-default" role="progressbar" aria-valuenow="' . (round(($player->getMana() / $player->getManaMax()), 2, PHP_ROUND_HALF_UP) * 100) . '" aria-valuemin="0" aria-valuemax="100" style="width:' . (($player->getMana() / $player->getManaMax()) * 100) . '%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table width="100%" class="Table30">
+                                    <tbody>
+                                        <tr bgcolor="#F1E0C6">
+                                            <td width="80px"><b>Exp:</b></td>
+                                            <td>Have <b>' . $player->getExperience() . '</b> and need <b>' . ($player->getExpForLevel($player->getLevel() + 1) - $player->getExperience()) . '</b> to Level <b>' . ($player->getLevel() + 1) . '</b>.</td>
+                                        </tr>
+                                        <tr bgcolor="#D4C0A1">
+                                            <td><b>Percent:</b></td>
+                                            <td style="text-align: center">
+                                                ' . $next_lvl_percent . '%
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="' . $next_lvl_percent . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $next_lvl_percent . '%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table width="100%" class="Table30">
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center;"><a href="?subtopic=highscores&list=5"><img class="SkillIcon" src="images/skills/level.gif" alt="" style="border-style: none"></a></td>
+                                            <td style="text-align: center;"><a href="?subtopic=highscores&list=9"><img class="SkillIcon" src="images/skills/ml.gif" alt="" style="border-style: none"></a></td>
+                                            <td style="text-align: center;"><a href="?subtopic=highscores&list=7"><img class="SkillIcon" src="images/skills/fist.gif" alt="" style="border-style: none"></a></td>
+                                            <td style="text-align: center;"><a href="?subtopic=highscores&list=3"><img class="SkillIcon" src="images/skills/club.gif" alt="" style="border-style: none"></a></td>
+                                            <td style="text-align: center;"><a href="?subtopic=highscores&list=11"><img class="SkillIcon" src="images/skills/sword.gif" alt="" style="border-style: none"></a></td>
+                                            <td style="text-align: center;"><a href="?subtopic=highscores&list=2"><img class="SkillIcon" src="images/skills/axe.gif" alt="" style="border-style: none"></a></td>
+                                            <td style="text-align: center;"><a href="?subtopic=highscores&list=4"><img class="SkillIcon" src="images/skills/dist.gif" alt="" style="border-style: none"></a></td>
+                                            <td style="text-align: center;"><a href="?subtopic=highscores&list=10"><img class="SkillIcon" src="images/skills/def.gif" alt="" style="border-style: none"></a></td>
+                                            <td style="text-align: center;"><a href="?subtopic=highscores&list=6"><img class="SkillIcon" src="images/skills/fish.gif" alt="" style="border-style: none"></a></td>
+                                        </tr>
+                                        <tr bgcolor="#D4C0A1">
+                                            <td style="text-align: center;"><strong>Level</strong></td>
+                                            <td style="text-align: center;"><strong>ML</strong></td>
+                                            <td style="text-align: center;"><strong>Fist</strong></td>
+                                            <td style="text-align: center;"><strong>Mace</strong></td>
+                                            <td style="text-align: center;"><strong>Sword</strong></td>
+                                            <td style="text-align: center;"><strong>Axe</strong></td>
+                                            <td style="text-align: center;"><strong>Dist</strong></td>
+                                            <td style="text-align: center;"><strong>Def</strong></td>
+                                            <td style="text-align: center;"><strong>Fish</strong></td>
+                                        </tr>
+                                        <tr bgcolor="#F1E0C6">
+                                            <td style="text-align: center;">' . $player->getLevel() . '</td>
+                                            <td style="text-align: center;">' . $player->getMagLevel() . '</td>
+                                            <td style="text-align: center;">' . $player->getSkill(0) . '</td>
+                                            <td style="text-align: center;">' . $player->getSkill(1) . '</td>
+                                            <td style="text-align: center;">' . $player->getSkill(2) . '</td>
+                                            <td style="text-align: center;">' . $player->getSkill(3) . '</td>
+                                            <td style="text-align: center;">' . $player->getSkill(4) . '</td>
+                                            <td style="text-align: center;">' . $player->getSkill(5) . '</td>
+                                            <td style="text-align: center;">' . $player->getSkill(6) . '</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            ';
+        $plus_content .= '</div><br/>';
+//            $main_content .="<div class='TableContainer'>";
+//            $main_content .=$make_content_header("Aditional Information");
+//            $main_content .=$make_table_header();
+        $main_content .= $plus_content;
 		
 	//quest list
 	if(isset($config['site']['quests']) && is_array($config['site']['quests']) && count($config['site']['quests']) > 0)

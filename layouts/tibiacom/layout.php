@@ -6,8 +6,7 @@ if(!defined('INITIALIZED'))
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Tibia - Free Multiplayer Online Role Playing Game</title>
-    <meta name="author" content="Marco Oliveira">
+    <title><?=$config['server']['serverName']?> - Free Multiplayer Online Role Playing Game</title>
     <meta http-equiv="content-language" content="pt-br">
     <meta name="keywords" content="free online game, free multiplayer game, free online rpg, free mmorpg, mmorpg, mmog, online role playing game, online multiplayer game, internet game, online rpg, rpg">
 
@@ -408,7 +407,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_tibiarules" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_tibiarules" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_tibiarules" class="SubmenuitemLabel">Ferobra Rules</div>
+                                        <div id="ActiveSubmenuItemLabel_tibiarules" class="SubmenuitemLabel">Regras no Thunder</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -416,7 +415,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_team" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_team" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_team" class="SubmenuitemLabel">Ferobra Support</div>
+                                        <div id="ActiveSubmenuItemLabel_team" class="SubmenuitemLabel">Suporte no Thunder</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -435,7 +434,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_ticket" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_ticket" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_ticket" class="SubmenuitemLabel">Ticket Support</div>
+                                        <div id="ActiveSubmenuItemLabel_ticket" class="SubmenuitemLabel">Suporte via Ticket</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -463,7 +462,7 @@ if(!defined('INITIALIZED'))
                                         <div id="submenu_shop" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                             <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                             <div id="ActiveSubmenuItemIcon_shop" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                            <div id="ActiveSubmenuItemLabel_shop" class="SubmenuitemLabel">Webshop</div>
+                                            <div id="ActiveSubmenuItemLabel_shop" class="SubmenuitemLabel">Shopping</div>
                                             <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         </div>
                                     </a>
@@ -472,7 +471,7 @@ if(!defined('INITIALIZED'))
                                         <div id="submenu_shop" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                             <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                             <div id="ActiveSubmenuItemIcon_shop" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                            <div id="ActiveSubmenuItemLabel_shop" class="SubmenuitemLabel">Webshop</div>
+                                            <div id="ActiveSubmenuItemLabel_shop" class="SubmenuitemLabel">Shopping</div>
                                             <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         </div>
                                     </a>
@@ -481,7 +480,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_donate" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_donate" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_donate" class="SubmenuitemLabel">Donate</div>
+                                        <div id="ActiveSubmenuItemLabel_donate" class="SubmenuitemLabel">Doar</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -490,7 +489,7 @@ if(!defined('INITIALIZED'))
                                         <div id="submenu_tankyou" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                             <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                             <div id="ActiveSubmenuItemIcon_tankyou" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                            <div id="ActiveSubmenuItemLabel_tankyou" class="SubmenuitemLabel">Thank You!</div>
+                                            <div id="ActiveSubmenuItemLabel_tankyou" class="SubmenuitemLabel">Obrigado!</div>
                                             <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         </div>
                                     </a>
@@ -515,17 +514,17 @@ if(!defined('INITIALIZED'))
                                 <?php
                                 $headline = ucfirst($_REQUEST['subtopic']);
                                 if($_REQUEST['subtopic'] == "latestnews")
-                                    $headline = "News";
+                                    $headline = "Novidades";
                                 elseif($_REQUEST['subtopic'] == "accountmanagement")
                                     $headline = "Account Management";
                                 elseif($_REQUEST['subtopic'] == "createaccount")
-                                    $headline = "Create Account";
+                                    $headline = "Crie sua Conta";
                                 elseif($_REQUEST['subtopic'] == "whoisonline")
-                                    $headline = "Who is Online";
+                                    $headline = "Quem está Online";
                                 elseif($_REQUEST['subtopic'] == "adminpanel")
-                                    $headline = "Admin Panel";
+                                    $headline = "Painel de Gerenciamento";
                                 elseif($_REQUEST['subtopic'] == "tankyou")
-                                    $headline = "Thank you";
+                                    $headline = "Obrigado";
                                 ?>
                                 <img id="ContentBoxHeadline" class="Title" src="pages/headline.php?txt=<?PHP echo ucwords(str_replace('_', ' ', strtolower($headline))); ?>" alt="Contentbox headline">
                                 <div class="Border_2">
@@ -702,16 +701,5 @@ if(!defined('INITIALIZED'))
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-    <?php if ($config['base_url'] !== 'https://localhost/global-website/production/ferobra-website/'){?>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110963342-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-110963342-1');
-    </script>
-    <?php }?>
 </body>
 </html>
