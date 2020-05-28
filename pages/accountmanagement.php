@@ -430,7 +430,8 @@ else {
 																	</tbody>
 																</table>
 															</div>
-														</div>
+														</div>';
+														/*
 														<div class="TableShadowContainer">
 															<div class="TableBottomShadow" style="background-image:url(' . $layout_name . '/images/global/content/table-shadow-bm.gif);">
 															<div class="TableBottomLeftShadow" style="background-image:url(' . $layout_name . '/images/global/content/table-shadow-bl.gif);"></div>
@@ -458,7 +459,7 @@ else {
 														<div style="justify-content: flex-end">
 														<img class="PremiumFeatureImage1" src="' . $layout_name . '/images/premiumfeatures/PremiumIcon-Travel.png" alt="premium feature 1" style="margin:0px 5px"/>
 														<div>use instant travel system</div></div></td></tr>    </table>  </div></div>
-														';
+														';*/
 
         $main_content .= '
 														<div class="TableShadowContainer">
@@ -1099,9 +1100,12 @@ else {
 																<b><font class="green">Premium Account</font></b><br>
 															</td>';
         } else {
+        	$daysVip = $account_logged->getPremDays();
+            $vipDays = $daysVip * 86400;
+            $resDate = time() + $vipDays;
             $main_content .= '
 															<td>' . $account_status . '<br>
-																<small>(Premium Time expires at Dec&#160;20&#160;2014,&#160;21:50:32&#160;CET)</small>
+																<small>(Premium Time expires at ' . strftime('%b %d %Y, %H:%M:%S', $resDate) . '</small>
 															</td>';
         }
         $main_content .= '
@@ -1136,7 +1140,7 @@ else {
                 break;
             }
         }
-        if ($accountTitle != '')
+        /*if ($accountTitle != '')
             $loyaltyTitle = $accountTitle . ' of ' . $config['server']['serverName'] . (($nextPoints == 0) ? ' (You got the most highest title in the ' . $config['server']['serverName'] . '.)' : ' (Promotion to: ' . $nextTitle . ' of ' . $config['server']['serverName'] . ' at ' . $nextPoints . ' Loyalty Points)');
         else
             $loyaltyTitle = 'No title (Promotion to: Scout of ' . $config['server']['serverName'] . ' at 50 Loyalty Points)';
@@ -1150,7 +1154,7 @@ else {
 															<td class="LabelV">Loyalty Title</td>
 															<td>' . $loyaltyTitle . '</td>
 														</tr>';
-        $main_content .= '
+        */$main_content .= '
 													</table>
 												</div>
 											</div>
@@ -1207,7 +1211,7 @@ else {
 				</tr>
 				<br/>';
 
-        $main_content .= '
+        /*$main_content .= '
 			<a name="Loyalty+Highscore+Character" ></a>
 				<div class="TopButtonContainer" >
 					<div class="TopButton" >
@@ -1285,7 +1289,7 @@ else {
 					</tr>
 				</table>
 			</div>
-				<br>';
+				<br>';*/
 
         $main_content .= '
 			<a name="Donates" ></a>
@@ -4839,7 +4843,7 @@ else {
                     $newchar_errors[] .= 'You have too many characters on your account <b>(' . $number_of_players_on_account . '/' . $config['site']['max_players_per_account'] . ')</b>!';
             }
             if (empty($newchar_errors)) {
-                $char_to_copy_name = "Rook Sample";
+                $char_to_copy_name = $config['site']['newchar_vocations'][$newchar_vocation];
                 $char_to_copy = new Player();
                 $char_to_copy->find($char_to_copy_name);
                 if (!$char_to_copy->isLoaded())
