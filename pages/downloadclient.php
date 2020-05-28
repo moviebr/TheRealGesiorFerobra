@@ -89,7 +89,7 @@ if(isset($_REQUEST['step']) && $_REQUEST['step'] == "downloadagreement") {
 																			</tr>
 																			<tr>
 																				<td valign="top">
-																					<a href="https://mega.nz/#!8GRHia7a!OT21iqxZ0_PNAp2KpmdPELXxOM7LEicQZnw4To0IImE" target="_blank" type="application/octet-stream" target="_top">Thunder Client 8.60<br/>Windows Client</a>
+																					<a href="'.$config['site']['linkClient'].'" target="_blank" type="application/octet-stream" target="_top">'.$config['site']['nameClient'].'<br/>Windows Client</a>
 																				</td>
 																			</tr>
 																		</table>

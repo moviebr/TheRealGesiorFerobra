@@ -30,7 +30,7 @@ if($_REQUEST['world'] == ""){
                                             <table class="TableContent" width="100%" style="border:1px solid #faf0d7;">
                                                 <tbody>
                                                 <tr>
-                                                    <td><b>Overall Maximum:</b>   '.$record[0].' Players' . ((count($record[0]) > 1) ? 's' : '') . '</td>
+                                                    <td><b>Overall Maximum:</b>   ' . $record[0] . ' Player' . (($record[0] != 1) ? 's' : '') . '</td>
                                                 </tr>
                                                 </tbody>
                                             </table>

@@ -149,7 +149,7 @@ $main_content .= '
 								<td class="LabelV200" >Online Record:</td>';
 							$record = $SQL->query("SELECT `value` FROM `server_config` WHERE `config` = 'players_record'")->fetch();
 							$main_content .= '
-								<td>'.$record[0].' Players' . ((count($record[0]) > 1) ? 's' : '') . '</td>
+								<td>' . $record[0] . ' Player' . ($record[0] != 1 ? 's' : '') . '</td>
 							</tr>
 							<tr>
 								<td class="LabelV200" >Creation Date:</td>

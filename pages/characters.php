@@ -122,13 +122,12 @@ if(!empty($name))
 					</tr>';
 			}
 				
-			$house = $SQL->query("SELECT * FROM `houses` WHERE `owner` = '".$player->getID()."'")->fetch();
-			if (count( $house[0]) > 0 )
-			{
-				$bgcolor = (($number_of_rows++ % 2 == 1) ?  $config['site']['darkborder'] : $config['site']['lightborder']);
-					$main_content .= '<TR BGCOLOR="'.$bgcolor.'"><TD>House:</TD><TD>';
-					$main_content .= $house['name'].' ('.$towns_list[$house['town_id']].')'.'</TD></TR>';
-			}
+			$house = $SQL->query("SELECT * FROM `houses` WHERE `owner` = '" . $player->getID() . "'")->fetch();
+        if (!empty($house[0])) {
+
+            $main_content .= '<TR ><TD>House:</TD><TD>';
+            $main_content .= $house['name'] . ' (' . $towns_list[$house['town_id']] . ')' . '</TD></TR>';
+        }
 				
 			$rank_of_player = $player->getRank();
 			if(!empty($rank_of_player))

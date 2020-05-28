@@ -19,7 +19,7 @@ imagefill($im, 0, 0, imagecolortransparent($im, null));
 
 
 $box = new Box($im);
-$box->setFontFace("../images/martel.ttf"); // http://www.dafont.com/elevant-by-pelash.font
+$box->setFontFace("../../../martel.ttf"); // http://www.dafont.com/elevant-by-pelash.font
 $box->setFontSize(24);
 $box->setFontColor(new Color(240, 209, 164));
 $box->setBox(4, -4, 260, 28);
@@ -30,7 +30,7 @@ $box->setStrokeSize(0); // Stroke size in pixels
 
 $box->draw($text); // Text to draw
 
-header("Content-type: image/png;");
+//header("Content-type: image/png;");
 imagepng($im, null, 0, PNG_ALL_FILTERS);
 die();
 

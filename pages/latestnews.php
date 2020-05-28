@@ -2,6 +2,70 @@
 if(!defined('INITIALIZED'))
 	exit;
 //var_dump($config['server']);
+
+//Barrinha la em cima
+$news_content .= '<div id="PlayersOnline" class="Box">
+            <div class="Corner-tl" style="background-image:url(layouts/tibiacom/images/global/content/corner-tl.gif);"></div>
+                <div class="Corner-tr" style="background-image:url(layouts/tibiacom/images/global/content/corner-tr.gif);"></div>
+                    <div class="Border_1" style="background-image:url(layouts/tibiacom/images/global/content/border-1.gif);"></div>
+                        <div class="BorderTitleText" style="background-image:url(layouts/tibiacom/images/global/content/newsheadline_background.gif); height: 28px;">
+                            <div class="InfoBar">
+                                <img class="InfoBarBigLogo" src="layouts/tibiacom/images/global/header/info/icon-cast.png">
+                                <span class="InfoBarNumbers">
+                                <img class="InfoBarSmallElement" src="layouts/tibiacom/images/global/header/info/icon-streamers.png">
+                                <span class="InfoBarSmallElement">0</span>
+                                <img class="InfoBarSmallElement" src="layouts/tibiacom/images/global/header/info/icon-viewers.png">
+                                <span class="InfoBarSmallElement">0</span>
+                            	</span>&nbsp;&nbsp;
+                            	<img class="InfoBarSmallElement" src="layouts/tibiacom/images/global/header/info/icon-download.png">
+                            	<span class="InfoBarNumbers">
+                                <span class="InfoBarSmallElement"><a href="/?subtopic=downloadclient&step=downloadagreement">Download</a></span>
+                            	</span>';
+
+                                    if ( ! session_id() ) @ session_start();
+
+                                    $last = null;
+                                    if (!isset($_SESSION)) {
+                                        $_SESSION = [];
+                                    }
+
+                                    if (isset($_SESSION['server_status_last_check'])) {
+                                        $last = $_SESSION['server_status_last_check'];
+                                    }
+                                    if ($last == null || time() > $last + 30) {
+                                        $_SESSION['server_status_last_check'] = time();
+                                        $_SESSION['server_status'] = $config['status']['serverStatus_online'];
+                                    }
+
+
+                                    if($_SESSION['server_status'] == 1){
+                                        $qtd_players_online = $SQL->query("SELECT count(*) as total from `players_online`")->fetch();
+                                        if($qtd_players_online["total"] == "1"){
+                                            $players_online = $qtd_players_online["total"].' Player Online';
+                                        }else{
+                                            $players_online = $qtd_players_online["total"].' Players Online';
+                                        }
+                                    }
+                                    else{
+                                        $players_online = 'Server Offline';
+                                    }
+                                    
+                                                        $news_content .= '
+                                                    <span class="InfoBarNumbers" style="float:right; margin-top:5px;">
+                                                    <span class="InfoBarSmallElement show_online_data">'. $players_online .'</span>
+                                                    </span>
+                                                    <img class="InfoBarBigLogo" src="layouts/tibiacom/images/global/header/info/icon-players-online.png" style="float:right;" style="margin-top:5px;">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="Border_1" style="background-image:url(layouts/tibiacom/images/global/content/border-1.gif);"></div>
+                                        <div class="CornerWrapper-b">
+                                            <div class="Corner-bl" style="background-image:url(layouts/tibiacom/images/global/content/corner-bl.gif);"></div>
+                                        </div>
+                                        <div class="CornerWrapper-b">
+                                            <div class="Corner-br" style="background-image:url(layouts/tibiacom/images/global/content/corner-br.gif);"></div>
+                                        </div>
+                                    </div>';
 //News Ticker
 $news_content .= '
 	<div id="NewsTicker" class="Box">
@@ -67,7 +131,7 @@ $news_content .= '
 							<img src="'.$layout_name.'/images/news/announcement.gif" width="150" height="100" border="0" alt="">
 						</div>
                     <div style="position: relative; top: -9px; margin-bottom: 10px;"><br>
-				 <font size="2px"></font><center><font size="2px"><b> IP:</b> EM BREVE |&nbsp;  <b>Port:</b> 7171 |&nbsp;  <b>Version:</b> 8.60</font> <br> </a></center><br><font size="2px"><b>'.$config['server']['serverName'].'</b> - <a href="/?subtopic=serverinfo" <b="">Informações do Servidor</a> - <small>(learn to do <b><a href="/?subtopic=serverinfo&action=tutorialdonate" <b="">Donate</a></b> and use our <b><a href="/?subtopic=serverinfo&action=tutorialshop" <b="">Shop Online</a></b>)</small> <br><br> Welcome to <b><font color="green">'.$config['server']['serverName'].'</font></b>, we count on map most complete of all servers currently, Cooldown and reworked Spells for a more dynamic and fun PvP.<br>Several bugs fixed and being fixed daily. Come check out the best server of all time! <br><a href="/?subtopic=createaccount" <b="">Create your account now</a> here your fun is guaranteed!
+				 <font size="2px"></font><center><font size="2px"><b> IP:</b> '.$config['site']['ipServer'].' |&nbsp;  <b>Port:</b> 7171 |&nbsp;  <b>Version:</b> 8.60</font> <br> </a></center><br><font size="2px"><b>'.$config['server']['serverName'].'</b> - <a href="/?subtopic=serverinfo" <b="">Informações do Servidor</a> - <small>(learn to do <b><a href="/?subtopic=serverinfo&action=tutorialdonate" <b="">Donate</a></b> and use our <b><a href="/?subtopic=serverinfo&action=tutorialshop" <b="">Shop Online</a></b>)</small> <br><br> Welcome to <b><font color="green">'.$config['server']['serverName'].'</font></b>, we count on map most complete of all servers currently, Cooldown and reworked Spells for a more dynamic and fun PvP.<br>Several bugs fixed and being fixed daily. Come check out the best server of all time! <br><a href="/?subtopic=createaccount" <b="">Create your account now</a> here your fun is guaranteed!
                 </font> </div>
 						<a id="Link" style="position: absolute; margin-bottom: 10px; top: 40px;" href="?subtopic=newsarchive&view=1">» read more</a>
 						</div>

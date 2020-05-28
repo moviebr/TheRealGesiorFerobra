@@ -2,14 +2,34 @@
 
 $config['site']['serverPath'] = "/usr/local/server/";
 
-# Configurações Novas by Movie
+#Novas Configurações by Movie
 $config['site']['ipServer'] = "127.0.0.1";
 $config['site']['director'] = "Ferobra Team";
+$config['site']['nameClient'] = "Thunder Client 8.60";
+$config['site']['linkClient'] = "localhost/download/tibia8.60";
 $config['site']['Outfits_path'] = $config['site']['serverPath'] . "data/XML/outfits.xml";
 $config['site']['Mounts_path'] = $config['site']['serverPath'] . "data/XML/mounts.xml";
 $config['site']['Itens_path'] = $config['site']['serverPath'] . "data/items/items.xml";
 $config['site']['Events_path'] = $config['site']['serverPath'] . "data/globalevents/globalevents.xml";
 $config['site']['Quests_path'] = $config['site']['serverPath'] . "data/XML/quests.xml";
+$config['site']['NetworksBanner'] = false;
+$config['site']['TopExperience'] = true;
+$config['site']['TopExperienceVoc'] = array(
+    0=> "Nenhuma", 
+    1=>"Sorcerer", 
+    2=>"Druid", 
+    3=>"Paladin", 
+    4=>"Knight", 
+    5=>"Master Sorcerer", 
+    6=>"Elder Druid", 
+    7=>"Royal Paladin", 
+    8=>"Elite Knight", 
+    9=>"Masterful Sorcerer", 
+    10=>"Ancient Druid", 
+    11=>"Glorious Paladin", 
+    12=>"Rageful Knight"
+);
+#Fim das novas configurações
 
 if ( ! function_exists('is_https'))
 {

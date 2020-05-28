@@ -205,7 +205,7 @@ if($logged)
 														<div class="TableContentContainer" >
 															<table class="TableContent" width="100%">
 																<tr>
-																	<td valign="middle" class="LabelV" width="90%">Double Coins Status</td>';
+																	<td valign="middle" class="LabelV" width="90%">Double Points Status</td>';
 																$doubleStatus = $SQL->query("SELECT `value` FROM `server_config` WHERE `config` = 'double'")->fetch();
 																$main_content .= '
 																	<td>
@@ -414,11 +414,11 @@ if($logged)
 																<div class="TableContentContainer" >
 																	<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																		<tr>
-																			<td class="LabelV">Add Coins</td>
+																			<td class="LabelV">Add Premium Points</td>
 																			<td>
 																				<input type="number" name="addPoints">
 																				<input type="hidden" name="accountPoints" value="'.$player->getAccount()->getName().'">
-																				<button type="submit" id="addP" name="addP">Add</button>
+																				<button type="submit" id="addP" name="addP">Add Points</button>
 																			</td>
 																		</tr>
 																	</table>
@@ -691,7 +691,7 @@ if($logged)
 																$main_content .= '
 																	<tr bgcolor="'.$bgcolor.'">
 																		<td>'.date("M d Y, G:i:s", $order['date']).'</td>
-																		<td>'.$order['coins'].' Tibia Coins</td>
+																		<td>'.$order['premium_points'].' Premium Points</td>
 																		<td>'.$order['price'].' BRL</td>
 																		<td>'.$order['method'].'</td>';
 																		$bankref = explode("-",$order['reference']);
@@ -1682,13 +1682,13 @@ if($logged)
 																			<td>"<i>'.$getorderInfo['msg'].'</i>"</td>
 																		</tr>
 																		<tr bgcolor="'.$config['site']['lightborder'].'">
-																			<td class="LabelV">Send '.(($doubleStatus['value'] == "active") ? (2 * $getpayInfo['coins']) : $getpayInfo['coins']).' coins to account '.$getpayInfo['account_name'].' ?</td>
+																			<td class="LabelV">Send '.(($doubleStatus['value'] == "active") ? (2 * $getpayInfo['premium_points']) : $getpayInfo['premium_points']).' premium points to account '.$getpayInfo['account_name'].' ?</td>
 																			<td>																			
 																				<table border="0" cellspacing="0" cellpadding="0" >
 																					<form action="?subtopic=adminpanel&action=sendPoints" method="post">
 																						<input type="hidden" name="orderID" value="'.$orderID.'">
 																						<input type="hidden" name="orderAccName" value="'.$getpayInfo['account_name'].'">
-																						<input type="hidden" name="orderPoints" value="'.$getpayInfo['coins'].'">
+																						<input type="hidden" name="orderPoints" value="'.$getpayInfo['premium_points'].'">
 																						<input type="hidden" name="confirm" value="yes">
 																						<tr>
 																							<td style="border:0px;" ><div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)" >
@@ -1818,7 +1818,7 @@ if($logged)
 																	<tr bgcolor="'.$config['site']['lightborder'].'">
 																		<td width="46%">'.$g_extra['offer_name'].'</td>
 																		<td>
-																			<input type="number" name="extraValue" value="'.$g_extra['coins'].'" '.(($g_extra['hide'] == 1) ? 'disabled' : '').'>
+																			<input type="number" name="extraValue" value="'.$g_extra['premium_points'].'" '.(($g_extra['hide'] == 1) ? 'disabled' : '').'>
 																			<input type="submit" name="extraUpdate" id="extraUpdate" value="Update" '.(($g_extra['hide'] == 1) ? 'disabled' : '').'>
 																			<input type="hidden" name="offerID" value="'.$g_extra['id'].'">
 																		</td>
@@ -1905,7 +1905,7 @@ if($logged)
 																<table class="TableContent" width="100%">
 																	<tr style="background-color:#D4C0A1;" >
 																		<td class="LabelV">Select Mount</td>
-																		<td class="LabelV">Coins</td>
+																		<td class="LabelV">Premium Points</td>
 																	</tr>
 																	<tr style="background-color:'.$config['site']['lightborder'].';" >
 																		<td>
@@ -2001,7 +2001,7 @@ if($logged)
 																	<tr style="background-color:'.$bgcolor.';">
 																		<td width="64px"><img src="'.$layout_name.'/images/shop/mounts/'.str_replace(" ","_",$g_mount['offer_name']).'.gif"</td>
 																		<td>'.$g_mount['offer_name'].'</td>
-																		<td>'.$g_mount['coins'].' Coins</td>
+																		<td>'.$g_mount['premium_points'].' Premium Points</td>
 																		<td width="135px">
 																			<form id="delMount" method="post" style="padding:0px;margin:0px;" >
 																				<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_red.gif)" >
@@ -2081,7 +2081,7 @@ if($logged)
 																<table class="TableContent" width="100%">
 																	<tr style="background-color:#D4C0A1;" >
 																		<td class="LabelV">Select Outfit</td>
-																		<td class="LabelV">Coins</td>
+																		<td class="LabelV">Premium Points</td>
 																	</tr>
 																	<tr style="background-color:'.$config['site']['lightborder'].';" >
 																		<td>
@@ -2179,7 +2179,7 @@ if($logged)
 																	<tr style="background-color:'.$bgcolor.';" >
 																		<td width="64px"><img src="'.$layout_name.'/images/shop/outfits/'.strtolower(str_replace(" ","_",$g_out['addon_name'])).'_male.gif"</td>
 																		<td>'.$g_out['addon_name'].'</td>
-																		<td>'.$g_out['coins'].' Coins</td>
+																		<td>'.$g_out['premium_points'].' Premium Points</td>
 																		<td width="135px">
 																			<form id="delOutfit" method="post" style="padding:0px;margin:0px;" >
 																				<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_red.gif)" >
@@ -2263,7 +2263,7 @@ if($logged)
 																		<td class="LabelV">Item Name</td>
 																		<td class="LabelV">Item Description</td>
 																		<td class="LabelV">Amount</td>
-																		<td class="LabelV">Coins</td>
+																		<td class="LabelV">Premium Points</td>
 																	</tr>
 																	<tr bgcolor="'.$config['site']['lightborder'].'">
 																		<td><input type="number" name="itemID" placeholder="Item Id"></td>
@@ -2357,7 +2357,7 @@ if($logged)
 																		<td>'.$g_item['itemid'].'</td>
 																		<td>'.$g_item['offer_name'].'</td>
 																		<td>'.((!empty($g_item['offer_description'])) ? $g_item['offer_description'] : 'No description').'</td>
-																		<td>'.$g_item['coins'].' Coins</td>																		
+																		<td>'.$g_item['premium_points'].' Premium Points</td>																		
 																		<td width="135px">
 																			<form id="delItem" method="post" style="padding:0px;margin:0px;" >
 																				<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_red.gif)" >
@@ -2397,14 +2397,14 @@ if($logged)
 							<tbody>
 								<tr>
 									<td><img src="'.$layout_name.'/images/global/content/headline-bracer-left.gif"></td>
-									<td style="text-align:center;vertical-align:middle;horizontal-align:center;font-size:17px;font-weight:bold;">Manage your tibia coins packages</td>
+									<td style="text-align:center;vertical-align:middle;horizontal-align:center;font-size:17px;font-weight:bold;">Manage your premium points packages</td>
 									<td><img src="'.$layout_name.'/images/global/content/headline-bracer-right.gif"></td>
 								</tr>
 							</tbody>
 						</table>
 					</center>
 					<br>';
-				$main_content .= '<p>You must add a package of tibia coins for your player can buy products in your shop.</p>';
+				$main_content .= '<p>You must add a package of premium points for your player can buy products in your shop.</p>';
 				$main_content .= '
 					<div class="msgStatusSuccess" style="text-align:center;color:green; padding: 5px; background:#c2f4b2; border:1px solid #165303;margin-bottom:15px;display:none;"></div>
 					<div class="msgStatusError" style="text-align:center;color:red; padding: 5px; background:#e59d9d; border:1px solid red;margin-bottom:15px;display:none;"></div>
@@ -2415,7 +2415,7 @@ if($logged)
 								<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
 								<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 								<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span>
-								<div class="Text">Adding new package of tibia coins</div>
+								<div class="Text">Adding new package of premium points</div>
 								<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span> 
 								<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 								<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
@@ -2437,14 +2437,14 @@ if($logged)
 															<div class="TableContentContainer" >
 																<table class="TableContent" width="100%">
 																	<tr style="background-color:#D4C0A1;" >
-																		<td class="LabelV">Amount of coins</td>
+																		<td class="LabelV">Amount of premium points</td>
 																		<td class="LabelV">Price (R$)</td>
 																		<td class="LabelV">Description</td>
 																	</tr>
 																	<tr bgcolor="'.$config['site']['lightborder'].'">
-																		<td><input type="number" name="pointsAmount" placeholder="Amount of coins"></td>
+																		<td><input type="number" name="pointsAmount" placeholder="Amount of premium points"></td>
 																		<td><input id="campoMoney" type="text" name="pointsPrice" placeholder="Price Ex. 10.00"></td>
-																		<td><input type="text" name="pointsDesc" placeholder="Coins short description" maxlenght="255"></td>
+																		<td><input type="text" name="pointsDesc" placeholder="Premium points short description" maxlenght="255"></td>
 																	</tr>
 																</table>
 															</div>
@@ -2490,7 +2490,7 @@ if($logged)
 								<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
 								<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 								<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span>
-								<div class="Text">Tibia Coins list sale</div>
+								<div class="Text">Premium Points list sale</div>
 								<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span> 
 								<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 								<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
@@ -2512,7 +2512,7 @@ if($logged)
 															<div class="TableContentContainer" >
 																<table class="TableContent" width="100%">
 																	<tr style="background-color:#D4C0A1;" >
-																		<td class="LabelV">Amount of Coins</td>
+																		<td class="LabelV">Amount of Premium Points</td>
 																		<td class="LabelV">Price</td>
 																		<td class="LabelV">Description</td>
 																		<td class="LabelV">*</td>
@@ -2523,7 +2523,7 @@ if($logged)
 																$bgcolor = (($points_number++ % 2 == 1) ?  $config['site']['darkborder'] : $config['site']['lightborder']);
 																$main_content .= '
 																	<tr style="background-color:'.$bgcolor.';" >
-																		<td>'.$g_point['count'].' Coins</td>
+																		<td>'.$g_point['count'].' Premium Points</td>
 																		<td>R$ '.number_format($g_point['price'],2,',','.').'</td>
 																		<td>'.((!empty($g_point['offer_description'])) ? $g_point['offer_description'] : 'No description').'</td>																	
 																		<td width="135px">

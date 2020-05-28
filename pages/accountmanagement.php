@@ -368,7 +368,7 @@ else {
 																			</span>
 																			<small>
 																				<br>The server is configured to free premium account , good game !<br>
-																				(Balance of tibia coins: ' . (($account_logged->getPremiumPoints() > 0) ? '<font class="red">' . $account_logged->getPremiumPoints() . '</font>' : '<font class="red">0</font>') . ' Coins)
+																				(Balance of premium points: ' . (($account_logged->getPremiumPoints() > 0) ? '<font class="red">' . $account_logged->getPremiumPoints() . '</font>' : '<font class="red">0</font>') . ' Points)
 																			</small>
 																		</td>';
         } else {
@@ -379,8 +379,10 @@ else {
             $daysVip = $account_logged->getPremDays();
             $vipDays = $daysVip * 86400;
             $resDate = time() + $vipDays;
+            if ($account_logged->getPremDays() > 0){
             $main_content .= '
 																			<small><br>Your premium time expires at <font style="text-transform:capitalize;">' . strftime('%b %d %Y, %H:%M:%S', $resDate) . '</font></small>';
+            }
             $main_content .= '
 																		</td>';
         }
@@ -699,7 +701,7 @@ else {
 												<div style="font-size:1px;height:4px;" ></div>
 											</div>
 											<p><b>' . $getTransfer[0] . ' donate' . (($getTransfer[0] >= 2) ? 's' : '') . ' pending of confirmation!</b></p>
-											<p>You bought tibia coins in our shop using or donate system, but need to confirm your donation. Click "Confirm" to see which donate is pending confirmation.</p>
+											<p>You bought premium points in our shop using or donate system, but need to confirm your donation. Click "Confirm" to see which donate is pending confirmation.</p>
 										</td>
 									<tr>
 								</table>
@@ -739,7 +741,7 @@ else {
 												<div style="font-size:1px;height:4px;" ></div>
 											</div>
 											<p><b>' . $getTransferAdmin[0] . ' donate' . (($getTransfer[0] >= 2) ? 's' : '') . ' confirmed!</b></p>
-											<p>You have some donate confirmations. Confirm and give the tibia coins to the player.</p>
+											<p>You have some donate confirmations. Confirm and give the premium points to the player.</p>
 										</td>
 									<tr>
 								</table>
@@ -996,7 +998,7 @@ else {
 						<div class="BoxFrameVerticalLeft" style="background-image:url(' . $layout_name . '/images/global/content/box-frame-vertical.gif);" /></div>
 						<div class="BoxFrameVerticalRight" style="background-image:url(' . $layout_name . '/images/global/content/box-frame-vertical.gif);" /></div>
 						<table style="width:100%;" >
-							<td style="width:100%;text-align:center;" ><nobr>[<a href="#General+Information" >General Information</a>]</nobr> <nobr>[<a href="#Loyalty+Highscore+Character" >Loyalty Highscore Character</a>]</nobr> <nobr>[<a href="#Donates" >Donates</a>]</nobr> ' . ((count($getProdutsCat) >= 1) ? '<nobr>[<a href="#Products+Available" >Products Available</a>]</nobr>' : '') . ' <nobr>[<a href="#Products+Ready+To+Use" >Products Ready To Use</a>]</nobr> <nobr>[<a href="#History" >History</a>]</nobr> <nobr>[<a href="#Registration" >Registration</a>]</nobr></td>
+							<td style="width:100%;text-align:center;" ><nobr>[<a href="#General+Information" >General Information</a>]</nobr> <nobr>[<a href="#Donates" >Donates</a>]</nobr> ' . ((count($getProdutsCat) >= 1) ? '<nobr>[<a href="#Products+Available" >Products Available</a>]</nobr>' : '') . ' <nobr>[<a href="#Products+Ready+To+Use" >Products Ready To Use</a>]</nobr> <nobr>[<a href="#History" >History</a>]</nobr> <nobr>[<a href="#Registration" >Registration</a>]</nobr></td>
 							<td>
 								<table border="0" cellspacing="0" cellpadding="0" >
 									<form action="?subtopic=accountmanagement" method="post" >
@@ -1104,15 +1106,16 @@ else {
             $vipDays = $daysVip * 86400;
             $resDate = time() + $vipDays;
             $main_content .= '
-															<td>' . $account_status . '<br>
-																<small>(Premium Time expires at ' . strftime('%b %d %Y, %H:%M:%S', $resDate) . '</small>
+															<td>' . $account_status . '<br>';
+																if ($account_logged->getPremDays() > 0){
+																	$main_content .= '<small>(Premium Time expires at ' . strftime('%b %d %Y, %H:%M:%S', $resDate) . '</small>
 															</td>';
-        }
+        }}
         $main_content .= '
 														</tr>
 														<tr style="background-color:#F1E0C6;" >
-															<td class="LabelV" >Tibia Coins:</td>
-															<td>' . $account_logged->getPremiumPoints() . ' tibia coins<br>';
+															<td class="LabelV" >Premium Points:</td>
+															<td>' . $account_logged->getPremiumPoints() . ' premium points<br>';
         $accname = $account_logged->getName();
         //INSERT INTO `pagseguro_transactions`(`transaction_code`, `name`, `payment_method`, `status`, `item_count`, `data`, `payment_amount`)
         $sql_points = "SELECT * FROM `pagseguro_transactions` WHERE `name` = '$accname' AND `status` = 'PAID' ORDER BY `data` DESC LIMIT 1";
@@ -1120,10 +1123,10 @@ else {
         if ($last_points_bought) {
             $getServiceInfo = $SQL->query("SELECT `count` FROM `z_shop_offer` WHERE `id` = '" . $last_points_bought['service_id'] . "'")->fetch();
             $main_content .= '
-															<small>(Your last donation was on ' . date("M d Y", strtotime($last_points_bought['data'])) . '. You donated to get ' . $last_points_bought['item_count'] . ' Tibia Coins.)</small>';
+															<small>(Your last donation was on ' . date("M d Y", strtotime($last_points_bought['data'])) . '. You donated to get ' . $last_points_bought['item_count'] . ' Premium Points.)</small>';
         } else
             $main_content .= '
-																<small>(You have not donated to get tibia coins yet. <a href="?subtopic=accountmanagement&action=donate" title="Buy now!">Buy now!</a>)</small>';
+																<small>(You have not donated to get premium points yet. <a href="?subtopic=accountmanagement&action=donate" title="Buy now!">Buy now!</a>)</small>';
         $main_content .= '
 															</td>
 														</tr>';
@@ -1352,7 +1355,7 @@ else {
 																							</span></span><br/>
 																Your donations are an incentive for us always bring the best.<br/>
 																<ul>
-																	<li>Your donations will be reversed in tibia coins.</li>
+																	<li>Your donations will be reversed in premium points.</li>
 																	<li>Note that some types of donations need to be confirmed. Will be listed below the outstanding donations that needs confirmation.</li>
 																</ul>
 															</td>
@@ -1370,7 +1373,7 @@ else {
 									</tr>';
         $getDonates = $SQL->query("SELECT * FROM `z_shop_donates` WHERE `status` = 'confirm' AND `account_name` = '" . $account_logged->getName() . "'")->fetchAll();
         $num = 0;
-        if (count($getDonates[0]) > 0) {
+        if ($getDonates[0] > 0) {
             $main_content .= '
 									<tr>
 										<td>
@@ -1390,7 +1393,7 @@ else {
                 $main_content .= '
 														<tr bgcolor="' . $bgcolor . '">
 															<td>' . date("M d Y", $donate['date']) . '</td>
-															<td>' . $donate['coins'] . ' coins por R$ ' . $donate['price'] . '</td>
+															<td>' . $donate['premium_points'] . ' premium points por R$ ' . $donate['price'] . '</td>
 															<td>[<a href="?subtopic=accountmanagement&action=confirmdonate&id=' . $donate['id'] . '">Confirm</a>]</td>
 														</tr>';
             }
@@ -4233,7 +4236,7 @@ else {
 															</td>
 														</tr>
 														<tr>
-															<td>After confirmed your donation our team will be up to 24 hours to credit your tibia coins.</td>
+															<td>After confirmed your donation our team will be up to 24 hours to credit your premium points.</td>
 														</tr>
 													</table>
 												</div>
@@ -4315,7 +4318,7 @@ else {
                 $main_content .= '
 																<tr bgcolor="' . $bgcolor . '">
 																	<td>' . date("M d Y", $doHistory['date']) . '</td>
-																	<td>' . $doHistory['coins'] . ' Tibia Coins</td>
+																	<td>' . $doHistory['premium_points'] . ' Premium Points</td>
 																	<td>' . $doHistory['price'] . ' BRL</td>
 																	<td>' . $doHistory['method'] . '</td>';
                 $bankref = explode("-", $doHistory['reference']);
@@ -4523,7 +4526,7 @@ else {
 																	<div class="TableContentContainer" >
 																		<table class="TableContent" width="100%">
 																			<tr>
-																				<td>You just confirmed a donation made to our server. Within 24 hours we will be checking your confirmation, then crediting your coins. Thank you very much!</td>
+																				<td>You just confirmed a donation made to our server. Within 24 hours we will be checking your confirmation, then crediting your points. Thank you very much!</td>
 																			</tr>';
                     $main_content .= '
 																		</table>

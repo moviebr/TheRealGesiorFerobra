@@ -4211,7 +4211,7 @@ button.close {
 }
 
 .scrollToTop {
-  background: url(../images/global/content/arrow_top.png) no-repeat 0 0;
+  background: url(images/global/content/arrow_top.png) no-repeat 0 0;
   width: 70px;
   height: 70px;
   padding: 10px;
@@ -4269,4 +4269,298 @@ button.close {
 
 ::-webkit-resizer {
   /* 7 */
+}
+
+#TopLvl {
+  color: #d3e7f2;
+  line-height: 1.2 !important;
+  position: relative;
+  width: 100%;
+  background: url(images/global/themeboxes/rank/bk_themebox_ferobra_old.png) no-repeat center calc(100% - 1044px), url(images/global/themeboxes/rank/bk_themebox_ferobra_old.png) no-repeat center calc(100% - 748px), url(images/global/themeboxes/rank/bk_themebox_ferobra_old.png) no-repeat center calc(100% - 452px), url(images/global/themeboxes/rank/bk_themebox_ferobra_old.png) no-repeat center bottom;
+  padding: 0 0 0 0;
+  top: 141px;
+  max-height: 466px;
+  min-height: 415px;
+  text-align: justify;
+  margin: 0 auto;
+}
+
+#TopLvl::after {
+  content: "";
+  z-index: 5;
+  background: url(images/global/themeboxes/rank/bk_pilar_left.png) no-repeat center;
+  background-size: cover;
+  background-position-x: 0;
+  background-position-y: 10px;
+  width: 10%;
+  height: 88%;
+  position: absolute;
+  right: -13px;
+  top: -14px;
+}
+
+#TopLvl::before {
+  content: "";
+  z-index: 5;
+  background: url(images/global/themeboxes/rank/bk_pilar_right.png) no-repeat center;
+  background-size: cover;
+  background-position-x: 0;
+  background-position-y: 10px;
+  width: 10%;
+  height: 88%;
+  position: absolute;
+  left: -15px;
+  top: -14px;
+}
+
+.top1 {
+  color: #FFFF00 !important;
+}
+
+.top2 {
+  color: #FFFDC3 !important;
+}
+
+.top3 {
+  color: #f3c5a4 !important;
+}
+
+.top_online {
+  color: #13ff02 !important;
+}
+
+.top_offline {
+  color: #fc3 !important;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.TopLvl_title {
+  z-index: 10;
+  position: relative;
+  top: -37px;
+  text-align: center;
+  background: url(images/global/themeboxes/rank/bks_top.png) no-repeat center bottom;
+  background-size: 100%;
+  width: 130%;
+  color: #ffdf8e;
+  text-shadow: 0 1px 2px #000, 0 1px 5px #000;
+  font-size: 12px;
+  margin: 18px 0 0 -25px;
+  line-height: 76px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  box-shadow: none;
+  text-transform: uppercase;
+}
+
+.topleveltext {
+  color: #ffdf8e;
+  text-shadow: 0 1px 2px #000, 0 1px 5px #000;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: none;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.topleveltext:hover {
+  color: #89d1da;
+  text-shadow: 2px 2px 7px #868686;
+}
+
+.topleveltext span {
+  font-size: 13px;
+  color: white;
+}
+
+.topleveltext small {
+  color: white;
+  font: 600 7pt Verdana, Arial, Times New Roman, sans-serif;
+}
+
+.tplevellayout {
+  z-index: 150;
+  min-height: 65px;
+  margin: -10px 0 0 0;
+  padding: 0 0 6px 40px;
+  position: relative;
+  top: -35px;
+}
+
+.tplevellayout:last-child {
+  padding: 0 0 40px 40px;
+}
+
+.rankinglevel span {
+  float: left;
+  display: block;
+  width: 68px;
+  height: 38px;
+  margin: -6px 1px 0 -24px;
+}
+
+.rankinglevel span.firstlevel {
+  background: transparent url(images/global/themeboxes/rank/rank.png) no-repeat center;
+  position: absolute;
+  width: 19px;
+  background-position-x: -23px;
+  top: 0;
+  left: 58px;
+  z-index: 3;
+}
+
+.rankinglevel span.secondlevel {
+  background: transparent url(images/global/themeboxes/rank/rank.png) no-repeat center;
+  position: absolute;
+  width: 19px;
+  background-position-x: -4px;
+  top: 0;
+  left: 58px;
+  z-index: 2;
+}
+
+.rankinglevel span.thirdlevel {
+  background: transparent url(images/global/themeboxes/rank/rank.png) no-repeat center;
+  position: absolute;
+  width: 19px;
+  background-position-x: -44px;
+  top: 0;
+  left: 58px;
+  z-index: 1;
+}
+
+.rankinglevel #firstlevel_nomount {
+  z-index: 103;
+  background: transparent url(images/global/themeboxes/rank/t_yellow.png) no-repeat;
+  background-size: 111%;
+  position: absolute;
+  width: 84px;
+  height: 96px;
+  transform: rotate(-24deg);
+  top: -31px;
+  left: -52px;
+}
+
+.rankinglevel #seccondlevel_nomount {
+  z-index: 102;
+  background: transparent url(images/global/themeboxes/rank/t_red.png) no-repeat;
+  background-size: 111%;
+  position: absolute;
+  width: 84px;
+  height: 96px;
+  transform: rotate(-24deg);
+  top: -31px;
+  left: -52px;
+}
+
+.rankinglevel #thirdlevel_nomount {
+  z-index: 101;
+  background: transparent url(images/global/themeboxes/rank/t_blue.png) no-repeat;
+  background-size: 111%;
+  position: absolute;
+  width: 84px;
+  height: 96px;
+  transform: rotate(-24deg);
+  top: -31px;
+  left: -52px;
+}
+
+.rankinglevel #firstlevel_mount {
+  z-index: 103;
+  background: transparent url(images/global/themeboxes/rank/t_yellow.png) no-repeat;
+  background-size: 100%;
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  transform: rotate(-19deg);
+  top: -49px;
+  left: -65px;
+}
+
+.rankinglevel #seccondlevel_mount {
+  z-index: 102;
+  background: transparent url(images/global/themeboxes/rank/t_red.png) no-repeat;
+  background-size: 100%;
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  transform: rotate(-19deg);
+  top: -49px;
+  left: -65px;
+}
+
+.rankinglevel #thirdlevel_mount {
+  z-index: 101;
+  background: transparent url(images/global/themeboxes/rank/t_blue.png) no-repeat;
+  background-size: 100%;
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  transform: rotate(-19deg);
+  top: -49px;
+  left: -65px;
+}
+
+.see_more_top_rank {
+  z-index: 160;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: Roboto, Sans-serif, serif;
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 65px;
+  text-align: center;
+}
+
+.see_more_top_rank a {
+  color: #fff !important;
+  font-family: Roboto, Sans-serif, serif;
+  text-decoration: none;
+}
+
+.rank_copyright {
+  z-index: 160;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: Anurati, Sans-serif, serif;
+  font-size: 0.5em;
+  position: absolute;
+  bottom: 30px;
+  text-align: center;
+}
+
+.rank_copyright a {
+  /*text-shadow: 0 1px 2px #000, 0 1px 5px #000;*/
+  color: #fff !important;
+  font-family: Anurati, Sans-serif, serif;
+  text-decoration: none;
+}
+
+.rank_copyright a:hover {
+  /*text-shadow: 0 1px 2px #000, 0 1px 5px #000;*/
+  color: #fff !important;
+  font-family: Anurati, Sans-serif, serif;
+  text-decoration: none;
+}
+
+.rank_pbot_copyright {
+  z-index: 160;
+  width: 100%;
+  font-size: 0.5em;
+  position: absolute;
+  bottom: 50px;
+  text-align: center;
+}
+.outfitImgtoplevel {
+    z-index: 1;
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    left: -36px;
+    margin-top: -20px;
 }

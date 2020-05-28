@@ -78,8 +78,8 @@ class Shop extends ObjectData {
 	public function getId(){return $this->data['id'];}
 	public function setCategory($category){$this->data['category'] = $category;}
 	public function getCategory(){return $this->data['category'];}
-	public function setPoints($points){$this->data['coins'] = $points;}
-	public function getPoints(){return $this->data['coins'];}
+	public function setPoints($points){$this->data['premium_points'] = $points;}
+	public function getPoints(){return $this->data['premium_points'];}
 	public function setPrice($price){$this->data['price'] = $price;}
 	public function getPrice(){return $this->data['price'];}
 	public function setItemId($itemid){$this->data['price'] = $itemid;}

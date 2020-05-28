@@ -3,15 +3,14 @@ if(!defined('INITIALIZED'))
 	exit;
 /* Polls System By Averatec from pervera.pl & otland.net */ 
 
-if($logged) 
-{ 
+if($logged) { 
     $link = "polls"; // your link to polls in index.php 
     $dark = $config['site']['darkborder']; 
     $light = $config['site']['lightborder']; 
-    $color[] = red; // for <15% 
-    $color[] = orange; // for <35% 
-    $color[] = yellow; // for <=50% 
-    $color[] = green; // for >50% 
+    $color[] = 'red'; // for <15%
+    $color[] = 'orange'; // for <35%
+    $color[] = 'yellow'; // for <=50%
+    $color[] = 'green'; // for >50%
     $time = time(); 
     $POLLS = $SQL->query('SELECT * FROM '.$SQL->tableName('z_polls').''); 
     $level = 120; // need level to vote 

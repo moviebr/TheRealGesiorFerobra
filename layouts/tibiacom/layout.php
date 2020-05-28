@@ -90,7 +90,7 @@ if(!defined('INITIALIZED'))
 </head>
 
 <body onbeforeunload="SaveMenu();"
-      style="background-image:url(<?php echo $layout_name; ?>/images/global/header/background-artwork.jpg);
+      style="background-image:url(<?php echo $layout_name; ?>/images/global/header/Background_Artwork_10.94.jpg);
               background-size: 100%;
               background-position: top center;
               background-repeat: no-repeat;
@@ -577,9 +577,47 @@ if(!defined('INITIALIZED'))
                                     <div id="PlayersOnline" onclick="window.location = '?subtopic=worlds';"><?php echo $players_online; ?></div>
                                 </div>
                                 <div id="Themeboxes">
+                                    <!-- Top Experience -->
                                     <?php
-                                    $skills = $SQL->query('SELECT * FROM players WHERE deleted = 0 AND group_id = 1 AND account_id != 1 ORDER BY level DESC LIMIT 5');
+                                        if ($config['site']['TopExperience'] == true){
+                                    $skills = $SQL->query('SELECT * FROM players WHERE deleted = 0 AND group_id = 1  ORDER BY level DESC LIMIT 5');
                                     ?>
+
+            <div id="TopLvl">
+                <h3 class="TopLvl_title">Top 5 Experience</h3>
+                    <?php
+                        $a = 1;
+                        $vocations = $config['site']['TopExperienceVoc'];
+                            foreach($skills as $skill) {
+                            $outfit = 'http://outfits.ferobraglobal.com/animoutfit.php?id='.$skill['looktype'].'&addons='.$skill['lookaddons'].'&head='.$skill['lookhead'].'&body='.$skill['lookbody'].'&legs='.$skill['looklegs'].'&feet='.$skill['lookfeet'].'';
+                    ?>
+            <div class="tplevellayout">
+                <a class="topleveltext top_offline" style="text-decoration:none" href="?subtopic=characters&name=<?=$skill['name']?>">
+                    <div class="outfitImgtoplevel" style="background:url(<?=$outfit?>);"></div>
+                    <span><?=$a?></span> - <?=$skill['name']?><br>
+                    <small>&nbsp;&nbsp;&nbsp;&nbsp;Level: <?=$skill['level']?><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<?=$vocations[$skill['vocation']]?>
+                    </small>
+                    <span class="firstlevel">
+                        <span id="firstlevel"></span>
+                    </span>
+
+                    <div class="rankinglevel">
+                        <?php if($a == 1){
+                            echo "<span class=\"firstlevel\"></span>";
+                        }elseif ($a == 2){
+                            echo "<span class=\"secondlevel\"></span>";
+                        }elseif ($a == 3){
+                            echo "<span class=\"thirdlevel\"></span>";
+                        }?>
+                    </div>
+                </a>
+            </div>
+                    <?php $a++; } ?>        
+                </div>
+
+                                    <?php
+                                    } ?>
                                     <!-- premium theme box -->
                                     <style>
                                         .ribbon-double {
@@ -616,6 +654,9 @@ if(!defined('INITIALIZED'))
                                         </div>
                                     </div>
                                     <!-- Facebook theme box -->
+                                    <?php
+                                        if($config['site']['NetworksBanner'] == true){
+                                    ?>
                                     <div id="NetworksBox" class="Themebox" style="background-image:url(<?php echo $layout_name; ?>/images/global/themeboxes/networks/networksbox.png);">
                                         <div id="FacebookBlock" >
                                             <a id="FacebookPageLink" target="_blank" href="<?php echo $config['social']['facebook']; ?>" >
@@ -632,6 +673,9 @@ if(!defined('INITIALIZED'))
                                         </div>
                                         <div class="Bottom" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/box-bottom.gif);">
                                         </div>
+                                        <?php
+                                            }
+                                        ?>
 
                                         <!-- current poll theme box -->
                                         <?php
@@ -693,6 +737,27 @@ if(!defined('INITIALIZED'))
             });
         }
     </script>
+    <script>
+        $(document).ready(function(){
+
+            //Check to see if the window is top if not then display button
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 100) {
+                    $('.scrollToTop').fadeIn();
+                } else {
+                    $('.scrollToTop').fadeOut();
+                }
+            });
+
+            //Click event to scroll to top
+            $('.scrollToTop').click(function(){
+                $('html, body').animate({scrollTop : 0},800);
+                return false;
+            });
+
+        });
+    </script>
+    <div class="scrollToTop"></div>
     <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
