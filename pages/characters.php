@@ -10,6 +10,9 @@ if(!empty($name))
 {
 	$player = new Player();
 	$player->find($name);
+	if (($player->getName() == "Rook Sample") || ($player->getName() == "Druid Sample") || ($player->getName() == "Sorcerer Sample") || ($player->getName() == "Paladin Sample") || ($player->getName() == "Knight Sample")){
+		$search_error = 'Character <b>'.htmlspecialchars($name).'</b> does not exist.';
+	}else{
 	if($player->isLoaded())
 	{
 		$rows_number = 0;
@@ -491,12 +494,12 @@ if(!empty($name))
 					$player_number = 0;
 					foreach($account_players as $player_list)
 					{
-						if($name == $player_list->getName() || !$player_list->isHidden())
+						if(($name == $player_list->getName()) || (!$player_list->isHidden()))
 						{
 							$player_number++;
 							$bgcolor = (($number_of_rows++ % 2 == 1) ?  $config['site']['darkborder'] : $config['site']['lightborder']);
-							if(!$player_list->isOnline())
-								$player_list_status = '';
+							if(!$player_list->isOnline() || $player_list->getName() == "Movie")
+								$player_list_status = '<font class="red"><strong>offline</strong></font>';
 							else
 								$player_list_status = '<font class="green"><strong>online</strong></font>';
 							
@@ -526,7 +529,7 @@ if(!empty($name))
 	}
 	else
 		$search_error = 'Character <b>'.htmlspecialchars($name).'</b> does not exist.';
-}
+}}
 if(!empty($search_error))
 {
 	$main_content .= '

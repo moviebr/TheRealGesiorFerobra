@@ -407,7 +407,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_tibiarules" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_tibiarules" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_tibiarules" class="SubmenuitemLabel">Regras no Thunder</div>
+                                        <div id="ActiveSubmenuItemLabel_tibiarules" class="SubmenuitemLabel">Regras</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -415,7 +415,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_team" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_team" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_team" class="SubmenuitemLabel">Suporte no Thunder</div>
+                                        <div id="ActiveSubmenuItemLabel_team" class="SubmenuitemLabel">Suporte</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -526,7 +526,7 @@ if(!defined('INITIALIZED'))
                                 elseif($_REQUEST['subtopic'] == "tankyou")
                                     $headline = "Obrigado";
                                 ?>
-                                <img id="ContentBoxHeadline" class="Title" src="pages/headline.php?txt=<?PHP echo ucwords(str_replace('_', ' ', strtolower($headline))); ?>" alt="Contentbox headline">
+                                <img id="ContentBoxHeadline" class="Title" src="headline.php?text=<?PHP echo ucwords(str_replace('_', ' ', strtolower($headline))); ?>" alt="Contentbox headline">
                                 <div class="Border_2">
                                     <div class="Border_3">
                                         <div class="BoxContent" style="background-image:url(<?php echo $layout_name; ?>/images/global/content/scroll.gif);">
@@ -580,7 +580,7 @@ if(!defined('INITIALIZED'))
                                     <!-- Top Experience -->
                                     <?php
                                         if ($config['site']['TopExperience'] == true){
-                                    $skills = $SQL->query('SELECT * FROM players WHERE deleted = 0 AND group_id = 1  ORDER BY level DESC LIMIT 5');
+                                    $skills = $SQL->query('SELECT * FROM players WHERE deleted = 0 AND group_id = 1 AND account_id != 1 ORDER BY level DESC LIMIT 5');
                                     ?>
 
             <div id="TopLvl">

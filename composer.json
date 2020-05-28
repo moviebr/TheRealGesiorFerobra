@@ -8,6 +8,7 @@
         }
     ],
     "require": {
-        "phpmailer/phpmailer": "^6.0"
+        "phpmailer/phpmailer": "^6.0",
+        "stil/gd-text": "^1.1"
     }
 }

@@ -49,7 +49,7 @@ $main_content .= "<table border=0 cellspacing=1 cellpadding=4 width=100%>
 foreach($list as $i => $supporter)
 {
 	$bgcolor = (($i++ % 2 == 1) ?  $config['site']['darkborder'] : $config['site']['lightborder']);
-	$main_content .= '<tr bgcolor="'.$bgcolor.'"><td>'.htmlspecialchars($supporter['name']).'</a></td><td>' . htmlspecialchars(Website::getGroupName($supporter['group_id'])) . '</td></tr>';
+	$main_content .= '<tr bgcolor="'.$bgcolor.'"><td><a href="?subtopic=characters&name='. $supporter['name'] .'">'.htmlspecialchars($supporter['name']).'</a></td><td>' . htmlspecialchars(Website::getGroupName($supporter['group_id'])) . '</td></tr>';
 }
 
 $main_content .= "<br><br>";
