@@ -2342,7 +2342,18 @@ UNLOCK TABLES;
 
 -- Dump completed on 2018-07-03 23:19:56
 
--- Fixado guilds.php
+-- Novos comandos by Movie
+INSERT INTO `z_shop_category` (`id`, `name`, `desc`, `button`, `hide`) VALUES
+(2, 'Extra Services', 'Buy an extra service to transfer a character to another game world, to change your character name or sex, to change your account name, or to get a new recovery key.', '_sbutton_getextraservice.gif', 0),
+(3, 'Outfits', 'Buy your characters one or more of the fancy outfits offered here.', '_sbutton_getoutfit.gif', 1),
+(4, 'Items', 'Buy items for your character be more stronger in the game.', '_sbutton_getextraservice.gif', 1);
+
+INSERT INTO `z_shop_offer` (`id`, `category`, `coins`, `price`, `itemid`, `mount_id`, `addon_name`, `count`, `offer_type`, `offer_description`, `offer_name`, `offer_date`, `default_image`, `hide`) VALUES
+(5, 2, 250, '', 0, '', '', 1, 'changename', 'Buy a character name change to rename one of your characters.', 'Character Change Name', 1416865577, 'changename.png', 0),
+(6, 2, 10, '', 0, '', '', 1, 'changesex', 'Buy a character sex change to turn your male character into a female one, or your female character into a male one.', 'Character Change Sex', 1416874417, 'changesex.png', 1),
+(7, 2, 250, '', 0, '', '', 1, 'changeaccountname', 'Buy an account name change to select a different name for your account.', 'Account Name Change', 1416874601, 'changeaccountname.png', 0),
+(8, 2, 300, '', 0, '', '', 1, 'newrk', 'If you need a new recovery key, you can order it here. Note that the letter for the new recovery key can only be sent to the address in the account registration.', 'Recovery Key', 1416874816, 'newrk.png', 0);
+
 DROP TRIGGER IF EXISTS `oncreate_guilds`;
 DELIMITER //
 CREATE TRIGGER `oncreate_guilds` AFTER INSERT ON `guilds`
@@ -2352,4 +2363,4 @@ CREATE TRIGGER `oncreate_guilds` AFTER INSERT ON `guilds`
     INSERT INTO `guild_ranks` (`name`, `level`, `guild_id`) VALUES ('a Member', 1, NEW.`id`);
 END
 //
-DELIMITER ;
+DELIMITER;

@@ -43,7 +43,7 @@ if(!defined('INITIALIZED'))
 		$g_Prices = '{';
 		foreach($get_Services as $g_Ser) {
 			$g_Prices .= '"'.$g_Ser['id'].'":{';
-			$g_Prices .= '"1":"'.$g_Ser['coins'].'"';
+			$g_Prices .= '"1":"'.$g_Ser['points'].'"';
 			$g_Prices .= '},';
 		}
 		$g_Prices = substr($g_Prices,0,-1);
@@ -117,7 +117,7 @@ if(!defined('INITIALIZED'))
 							} else {
 								// activate the service
 								// set the price
-								$(\'#PD_\' + g_Services[i]).html(g_Prices[g_Services[i]][a_PaymentMethodID] + \' Coins\');
+								$(\'#PD_\' + g_Services[i]).html(g_Prices[g_Services[i]][a_PaymentMethodID] + \' Points\');
 								$(\'#ServiceID_NotAllowed_\' + g_Services[i]).hide();
 							}
 						}
@@ -351,18 +351,14 @@ if(!defined('INITIALIZED'))
 																							<div class="ServiceID_HelperDiv" style="z-index: 999;" ></div>
 																						</span>
 																					</div>';
-																			if ($product['category'] == 4) {
+																			if ($product['category'] == 3) {
 																				$main_content .= '
 																					<div class="ServiceID_Icon_New" id="ServiceID_Icon_New_'.$product['id'].'" style="background-image:url('.$layout_name.'/images/shop/outfits/'.strtolower(str_replace(" ","_",$product['addon_name'])).'_male.gif); background-repeat:no-repeat; margin:5px 0;" ></div>
 																					<div class="ServiceID_Icon_New" id="ServiceID_Icon_New_'.$product['id'].'" style="background-image:url('.$layout_name.'/images/shop/outfits/'.strtolower(str_replace(" ","_",$product['addon_name'])).'_female.gif); background-repeat:no-repeat; margin:5px 60px;" ></div>';
 																			}
-																			if ($product['category'] == 5)
+																			if ($product['category'] == 4)
 																				$main_content .= '
 																					<div class="ServiceID_Icon_New" id="ServiceID_Icon_New_'.$product['id'].'" style="background-image:url('.$layout_name.'/images/shop/items/'.$product['itemid'].'.gif); background-repeat:no-repeat; margin:20px 45px;" ></div>';
-																			if ($product['category'] == 3) {
-																				$main_content .= '
-																					<div class="ServiceID_Icon_New" id="ServiceID_Icon_New_'.$product['id'].'" style="background-image:url('.$layout_name.'/images/shop/mounts/'.str_replace(" ","_",$product['offer_name']).'.gif); background-repeat:no-repeat; margin:-5px 22px;" ></div>';
-																			}
 																			if ($product['category'] == 6) {
 																				$main_content .= '
 																					<div class="ServiceID_Icon_New" id="ServiceID_Icon_New_'.$product['id'].'" style="background-image:url('.$layout_name.'/images/shop/points.gif); background-repeat:no-repeat; margin:20px 45px;" ></div>';
@@ -380,7 +376,7 @@ if(!defined('INITIALIZED'))
 																								<input type="radio" id="ServiceID_'.$product['id'].'" class="ServiceID" name="ServiceID" value="'.$product['id'].'" />
 																								'.$product['offer_name'].' </div>
 																						</div>
-																						<div class="ServiceIDPriceContainer" ><span class="ServiceIDPrice" id="PD_'.$product['id'].'" >'.$product['coins'].' Coins</span></div>
+																						<div class="ServiceIDPriceContainer" ><span class="ServiceIDPrice" id="PD_'.$product['id'].'" >'.$product['points'].' Points</span></div>
 																					</label>
 																				</div>
 																			</div>
@@ -390,10 +386,8 @@ if(!defined('INITIALIZED'))
 																if($serviceCategoryId == 2)
 																	$itemName = "Extra Services";
 																if($serviceCategoryId == 3)
-																	$itemName = "Mounts";
-																if($serviceCategoryId == 4)
 																	$itemName = "Outfits";
-																if($serviceCategoryId == 5)
+																if($serviceCategoryId == 4)
 																	$itemName = "Items";
 																	
 																$main_content .= '<p>None <strong>'.$itemName.'</strong> has been added for sale yet .</p>';
@@ -436,7 +430,7 @@ if(!defined('INITIALIZED'))
 																			<div class="PMCID_Icon_Over" id="PMCID_Icon_Over_1" ></div>
 																			<span style="position: absolute; left: 125px; top: 53px; z-index: 99;" >
 																				<span style="margin-left: 5px; position: absolute; margin-top: 2px;" >																					
-																					<span class="HelperDivIndicator" onMouseOver="ActivateHelperDiv($(this), \'Information:\', \'Tibia Coins can be used to purchase addons, mounts, items and extra services.\', \'\');" onMouseOut="$(\'#HelperDivContainer\').hide();" >
+																					<span class="HelperDivIndicator" onMouseOver="ActivateHelperDiv($(this), \'Information:\', \'Premium Points can be used to purchase addons, mounts, items and extra services.\', \'\');" onMouseOut="$(\'#HelperDivContainer\').hide();" >
 																						<image style="border:0px;" src="'.$layout_name.'/images/global/content/info.gif" />
 																					</span>
 																				</span>
@@ -506,10 +500,10 @@ if(!defined('INITIALIZED'))
 			if(empty($services_errors)) {
 				$shop_offer = $SQL->query("SELECT * FROM `z_shop_offer` WHERE `id` = '$service_id'")->fetch();
 				$service_price = $shop_offer['price'];
-				$service_points = $shop_offer['coins'];
+				$service_points = $shop_offer['points'];
 				$service_name = $shop_offer['offer_name'];
 				if($account_logged->getPremiumPoints() < $service_points)
-					$services_errors[] = "You need at least ".$service_points." tibia coins to purchase the ".$service_name.".";
+					$services_errors[] = "You need at least ".$service_points." premium points to purchase the ".$service_name.".";
 			}
 			if(empty($services_errors))
 				if($account_logged->getKey() == "")
@@ -710,8 +704,8 @@ if(!defined('INITIALIZED'))
 																	</tr>';
 																	$main_content .= '
 																	<tr>
-																		<td class="LabelV200" >Coins</td>
-																		<td>' . $service_info['coins'] . ' Tibia Coins</td>
+																		<td class="LabelV200" >Points</td>
+																		<td>' . $service_info['points'] . ' Premium Points</td>
 																	</tr>';
 															$main_content .= '
 																</table>
@@ -735,7 +729,7 @@ if(!defined('INITIALIZED'))
 																<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																	<tr>
 																		<td class="LabelV200" >Payment Method</td>
-																		<td>Tibia Coins</td>
+																		<td>Premium Points</td>
 																	</tr>';
 															if($sendTo == "friend")
 																$main_content .= '
@@ -796,7 +790,7 @@ if(!defined('INITIALIZED'))
 								<input type="hidden" name="ServiceID" value="' . $service_id . '" >
 								<input type="hidden" name="PMCID" value="' . $payment_method . '" >
 								<input type="hidden" name="ServiceCategoryID" value="' . $serviceCategoryID . '" >
-								<input type="hidden" name="Points" value="' . $service_info['coins'] . '" />
+								<input type="hidden" name="Points" value="' . $service_info['points'] . '" />
 								<input type="hidden" name="selectFriend" value="'.$friend_name.'">
 								<input type="hidden" name="sendTo" value="'.$sendTo.'">
 								<input type="hidden" name="step" value="4" >
@@ -898,7 +892,7 @@ if(!defined('INITIALIZED'))
 			if($sendTo == "friend" && !$friendInfo->isLoaded())
 				$services_errors[] = "The friend to whom you want to send the gift does not exist.";
 
-			$service_points = $service_info['coins'];
+			$service_points = $service_info['points'];
 			$debitPoints = $account_logged->getPremiumPoints() - $service_points;
 					
 			$rules_accept = (int) $_REQUEST['RulesAccept'];
@@ -907,7 +901,7 @@ if(!defined('INITIALIZED'))
 			$friend_acc = $friendInfo->getAccount()->getName();
 			
 			if($account_logged->getPremiumPoints() < $service_points)
-				$services_errors[] = "You need at least ".$service_points." tibia coins to purchase it.";
+				$services_errors[] = "You need at least ".$service_points." premium points to purchase it.";
 				
 			
 			if($rules_accept == 0)
@@ -922,10 +916,10 @@ if(!defined('INITIALIZED'))
 						$_SESSION['hash']  = $request;
 						
 						if($sendTo == "friend") {
-							$add_order = $SQL->query("INSERT INTO `z_shop_payment` (`account_name`,`service_id`,`service_category_id`,`payment_method_id`,`coins`,`status`,`date`,`gift`) VALUES ('$account_name','$service_id','$serviceCategoryID','$payment_method','$service_points','gift','$orderDate','0')");
-							$add_friend = $SQL->query("INSERT INTO `z_shop_payment` (`account_name`,`service_id`,`service_category_id`,`payment_method_id`,`coins`,`status`,`date`,`gift`) VALUES ('$friend_acc','$service_id','$serviceCategoryID','$payment_method','$service_points','ready','$orderDate','1')");
+							$add_order = $SQL->query("INSERT INTO `z_shop_payment` (`account_name`,`service_id`,`service_category_id`,`payment_method_id`,`points`,`status`,`date`,`gift`) VALUES ('$account_name','$service_id','$serviceCategoryID','$payment_method','$service_points','gift','$orderDate','0')");
+							$add_friend = $SQL->query("INSERT INTO `z_shop_payment` (`account_name`,`service_id`,`service_category_id`,`payment_method_id`,`points`,`status`,`date`,`gift`) VALUES ('$friend_acc','$service_id','$serviceCategoryID','$payment_method','$service_points','ready','$orderDate','1')");
 						} else {
-							$add_order = $SQL->query("INSERT INTO `z_shop_payment` (`account_name`,`service_id`,`service_category_id`,`payment_method_id`,`coins`,`status`,`date`,`gift`) VALUES ('$account_name','$service_id','$serviceCategoryID','$payment_method','$service_points','ready','$orderDate','0')");
+							$add_order = $SQL->query("INSERT INTO `z_shop_payment` (`account_name`,`service_id`,`service_category_id`,`payment_method_id`,`points`,`status`,`date`,`gift`) VALUES ('$account_name','$service_id','$serviceCategoryID','$payment_method','$service_points','ready','$orderDate','0')");
 						}							
 						$account_logged->setPremiumPoints($debitPoints);
 						$account_logged->save();

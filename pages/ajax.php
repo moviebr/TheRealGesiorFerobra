@@ -1,6 +1,7 @@
 <?php
 /**
  * SECURITY IMPLEMENT BY RIICKSOUZAA
+ EDITED BY MOVIE
  */
 if (!$_POST) {
     header("Location: ./");
@@ -56,31 +57,6 @@ if (!$_POST) {
             echo json_encode(array('status' => 'success', 'action' => $action));
         }
 
-        if ($_POST['acao'] == "addMounts") {
-
-            $mountInfo = $_POST['mountInfo'];
-            $mArray = explode(",", $mountInfo);
-            $mountId = $mArray[0];
-            $mountName = $mArray[1];
-            $mountCost = (int)$_POST['mountCost'];
-            $offerDate = time();
-
-            $addMount = $SQL->query("INSERT INTO `z_shop_offer` (`category`,`coins`,`mount_id`,`count`,`offer_type`,`offer_name`,`offer_date`) VALUES (3,'$mountCost','$mountId',1,'mounts','$mountName','$offerDate')");
-            if ($addMount)
-                echo json_encode(array('status' => 'success', 'msg' => 'Mount successfully added .'));
-            else echo json_encode(array('error' => 'success', 'msg' => 'Was not possible to add the mount , unknown problem .'));
-        }
-
-        if ($_POST['acao'] == "delMount") {
-            $offerId = (int)$_POST['offerId'];
-            $delMount = $SQL->query("DELETE FROM `z_shop_offer` WHERE `id` = '$offerId'");
-            if ($delMount) {
-                echo json_encode(array('status' => 'success'));
-            } else {
-                echo json_encode(array('status' => 'success'));
-            }
-        }
-
         if ($_POST['acao'] == "delOutfit") {
             $offerId = (int)$_POST['offerId'];
             $delOutfit = $SQL->query("DELETE FROM `z_shop_offer` WHERE `id` = '$offerId'");
@@ -107,7 +83,7 @@ if (!$_POST) {
         if ($_POST['acao'] == "extraUpdatePrice") {
             $offerID = (int)$_POST['offerId'];
             $points = (int)$_POST['pointsChange'];
-            $updateOffer = $SQL->query("UPDATE `z_shop_offer` SET `coins` = '$points' WHERE `id` = '$offerID'");
+            $updateOffer = $SQL->query("UPDATE `z_shop_offer` SET `points` = '$points' WHERE `id` = '$offerID'");
             echo json_encode(array('status' => true, 'msg' => 'Successfully changed value !'));
         }
 
@@ -118,7 +94,7 @@ if (!$_POST) {
             $data = time();
             $offerType = "outfits";
 
-            $addOutfit = $SQL->query("INSERT INTO `z_shop_offer` (`category`,`coins`,`addon_name`,`count`,`offer_type`,`offer_name`,`offer_date`) VALUES (4,'$outfitPrice','$outfitName',1,'$offerType','$offerName','$data')");
+            $addOutfit = $SQL->query("INSERT INTO `z_shop_offer` (`category`,`points`,`addon_name`,`count`,`offer_type`,`offer_name`,`offer_date`) VALUES (3,'$outfitPrice','$outfitName',1,'$offerType','$offerName','$data')");
             if ($addOutfit)
                 echo json_encode(array('status' => 'success', 'msg' => 'The outfit was registered successfully.'));
         }
@@ -132,7 +108,7 @@ if (!$_POST) {
             $data = time();
             $offerType = "items";
 
-            $addItem = $SQL->query("INSERT INTO `z_shop_offer` (`category`,`coins`,`itemid`,`count`,`offer_type`,`offer_description`,`offer_name`,`offer_date`) VALUES (5,'$itemPrice','$itemId','$itemAmount','$offerType','$itemDesc','$itemName','$data')");
+            $addItem = $SQL->query("INSERT INTO `z_shop_offer` (`category`,`points`,`itemid`,`count`,`offer_type`,`offer_description`,`offer_name`,`offer_date`) VALUES (4,'$itemPrice','$itemId','$itemAmount','$offerType','$itemDesc','$itemName','$data')");
             if ($addItem)
                 echo json_encode(array('status' => 'success', 'msg' => 'The item was registered successfully.'));
         }

@@ -7,8 +7,8 @@ class Shop extends ObjectData {
 	const LOADTYPE_CATEGORY = 'category';
 	const LOADTYPE_TYPE = 'offer_type';
 	public static $table = 'z_shop_offer';
-	public $data = array('category' => null, 'coins' => null, 'price' => null, 'itemid' => null, 'count' => null, 'offer_type' => null, 'offer_image' => null, 'offer_description' => null, 'offer_name' => null, 'offer_date' => null, 'default_image' => null);
-	public static $fields = array('id','category','coins','price','itemid','count','offer_type','offer_image','offer_description','offer_name','offer_date','default_image');
+	public $data = array('category' => null, 'points' => null, 'price' => null, 'itemid' => null, 'count' => null, 'offer_type' => null, 'offer_image' => null, 'offer_description' => null, 'offer_name' => null, 'offer_date' => null, 'default_image' => null);
+	public static $fields = array('id','category','points','price','itemid','count','offer_type','offer_image','offer_description','offer_name','offer_date','default_image');
 	
 	public function __construct($search_text = null, $search_by = self::LOADTYPE_ID)
     {
