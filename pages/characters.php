@@ -498,7 +498,7 @@ if(!empty($name))
 						{
 							$player_number++;
 							$bgcolor = (($number_of_rows++ % 2 == 1) ?  $config['site']['darkborder'] : $config['site']['lightborder']);
-							if(!$player_list->isOnline() || $player_list->getName() == "Movie")
+							if(!$player_list->isOnline())
 								$player_list_status = '<font class="red"><strong>offline</strong></font>';
 							else
 								$player_list_status = '<font class="green"><strong>online</strong></font>';

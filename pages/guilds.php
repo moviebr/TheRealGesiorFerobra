@@ -8,6 +8,25 @@ if($action == "") {
 	$guilds_list->addOrder(new SQL_Order(new SQL_Field('name'), SQL_Order::ASC));
 	
 	$main_content .= '
+	<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=4 WIDTH=100%>
+			<TR>
+				<TD><table border="0" cellspacing="0" cellpadding="0" >
+						<form action="?subtopic=guilds&action=create" method="post" >
+							<tr>
+								<td style="border:0px;" >
+									<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton.gif)" >
+										<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_over.gif);" ></div>
+											<input class="ButtonText" type="image" name="FoundGuild" alt="FoundGuild" src="'.$layout_name.'/images/global/buttons/_sbutton_foundguild.gif" >
+										</div>
+									</div>
+								</td>
+							</tr>
+						</form>
+					</table>
+				</TD>
+			</TR>
+		</TABLE>
+		<BR/>
 		<div class="TableContainer" >
 			<table class="Table3" cellpadding="0" cellspacing="0" >
 				<div class="CaptionContainer" >
@@ -103,29 +122,7 @@ if($action == "") {
 					</td>
 				</tr>
 			</table>
-		</div>
-		<BR>
-		<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=4 WIDTH=100%>
-			<TR>
-				<TD>No guild found that suits your needs?</TD>
-			</TR>
-			<TR>
-				<TD><table border="0" cellspacing="0" cellpadding="0" >
-						<form action="?subtopic=guilds&action=create" method="post" >
-							<tr>
-								<td style="border:0px;" >
-									<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton.gif)" >
-										<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_over.gif);" ></div>
-											<input class="ButtonText" type="image" name="FoundGuild" alt="FoundGuild" src="'.$layout_name.'/images/global/buttons/_sbutton_foundguild.gif" >
-										</div>
-									</div>
-								</td>
-							</tr>
-						</form>
-					</table>
-				</TD>
-			</TR>
-		</TABLE>';
+		</div>';
 }
 if($action == "view")
 {
@@ -316,6 +313,7 @@ if($action == "view")
 																<form action="?subtopic=guilds" method="post" >
 																	<tr>
 																		<td style="border:0px;" >
+																		<div style="height:18px;"></div>
 																			<input type="hidden" name=action value=guildwars >
 																			<input type="hidden" name=GuildName value="'.$_REQUEST['GuildName'].'" >
 																			<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton.gif)" >
@@ -328,22 +326,6 @@ if($action == "view")
 																</form>
 															</table>
 															<div style="font-size:1px;height:4px;" ></div>
-															<table border="0" cellspacing="0" cellpadding="0" >
-																<form action="?subtopic=guilds" method="post" >
-																	<tr>
-																		<td style="border:0px;" >
-																			<input type="hidden" name=action value=guildevents >
-																			<input type="hidden" name=GuildName value="'.$_REQUEST['GuildName'].'" >
-																			<input type="hidden" name=world value="Neptera" >
-																			<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton.gif)" >
-																				<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_over.gif);" ></div>
-																					<input class="ButtonText" type="image" name="Guild Events" alt="Guild Events" src="'.$layout_name.'/images/global/buttons/_sbutton_guildevents.gif" >
-																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																</form>
-															</table>
 															<div style="font-size:1px;height:4px;" ></div>
 														</div>
 													</td>
@@ -4327,31 +4309,6 @@ if($action == 'guildwar_accept')
 		$main_content .= '</div>    <div class="BoxFrameHorizontal" style="background-image:url('.$layout_name.'/images/content/box-frame-horizontal.gif);" /></div>    <div class="BoxFrameEdgeRightBottom" style="background-image:url('.$layout_name.'/images/content/box-frame-edge.gif);" /></div>    <div class="BoxFrameEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/content/box-frame-edge.gif);" /></div>  </div></div><br>';
 		$main_content .= '<br/><center><form action="?subtopic=guilds" METHOD=post><div class="BigButton" style="background-image:url('.$layout_name.'/images/buttons/sbutton.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/buttons/sbutton_over.gif);" ></div><input class="ButtonText" type="image" name="Back" alt="Back" src="'.$layout_name.'/images/buttons/_sbutton_back.gif" ></div></div></form></center>';
 	}
-}
-if($action == "guildevents") {
-	$main_content .= '
-		Page under construction
-		<BR><BR>
-				<TABLE BORDER=0 WIDTH=100%>
-					<TR>
-						<TD ALIGN=center>
-							<table border="0" cellspacing="0" cellpadding="0" >
-								<form action="?subtopic=guilds" method="post" >
-									<input type="hidden" name="action" value="view">
-									<input type="hidden" name="GuildName" value="'.$_REQUEST['GuildName'].'">
-									<tr>
-										<td style="border:0px;" ><div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton.gif)" >
-												<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_over.gif);" ></div>
-													<input class="ButtonText" type="image" name="Back" alt="Back" src="'.$layout_name.'/images/global/buttons/_sbutton_back.gif" >
-												</div>
-											</div>
-										</td>
-									</tr>
-								</form>
-							</table>
-						</TD>
-					</TR>
-				</TABLE>';
 }
 if($action == 'deletebyadmin')
 {

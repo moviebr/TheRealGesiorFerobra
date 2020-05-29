@@ -407,7 +407,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_tibiarules" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_tibiarules" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_tibiarules" class="SubmenuitemLabel">Regras</div>
+                                        <div id="ActiveSubmenuItemLabel_tibiarules" class="SubmenuitemLabel">Rules</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -415,7 +415,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_team" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_team" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_team" class="SubmenuitemLabel">Suporte</div>
+                                        <div id="ActiveSubmenuItemLabel_team" class="SubmenuitemLabel">Support</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -424,7 +424,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_erro" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_erro" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_erro" class="SubmenuitemLabel">Erro</div>
+                                        <div id="ActiveSubmenuItemLabel_erro" class="SubmenuitemLabel">Error</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -434,7 +434,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_ticket" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_ticket" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_ticket" class="SubmenuitemLabel">Suporte via Ticket</div>
+                                        <div id="ActiveSubmenuItemLabel_ticket" class="SubmenuitemLabel">Ticket Support</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -514,17 +514,31 @@ if(!defined('INITIALIZED'))
                                 <?php
                                 $headline = ucfirst($_REQUEST['subtopic']);
                                 if($_REQUEST['subtopic'] == "latestnews")
-                                    $headline = "Novidades";
+                                    $headline = "News";
                                 elseif($_REQUEST['subtopic'] == "accountmanagement")
                                     $headline = "Account Management";
                                 elseif($_REQUEST['subtopic'] == "createaccount")
-                                    $headline = "Crie sua Conta";
+                                    $headline = "Create Account";
                                 elseif($_REQUEST['subtopic'] == "whoisonline")
-                                    $headline = "Quem está Online";
+                                    $headline = "Who is Online";
                                 elseif($_REQUEST['subtopic'] == "adminpanel")
-                                    $headline = "Painel de Gerenciamento";
+                                    $headline = "Admin Panel";
                                 elseif($_REQUEST['subtopic'] == "tankyou")
-                                    $headline = "Obrigado";
+                                    $headline = "Thank You";
+                                elseif($_REQUEST['subtopic'] == "downloadclient")
+                                    $headline = "Download Client";
+                                elseif($_REQUEST['subtopic'] == "newsarchive")
+                                    $headline = "News Archive";
+                                elseif($_REQUEST['subtopic'] == "killstatistics")
+                                    $headline = "Kill Statistics";
+                                elseif($_REQUEST['subtopic'] == "lostaccount")
+                                    $headline = "Lost Account";
+                                elseif($_REQUEST['subtopic'] == "experiencetable")
+                                    $headline = "Experience Table";
+                                elseif($_REQUEST['subtopic'] == "serverinfo")
+                                    $headline = "Server Info";
+                                elseif($_REQUEST['subtopic'] == "tibiarules")
+                                    $headline = "Tibia Rules";
                                 ?>
                                 <img id="ContentBoxHeadline" class="Title" src="headline.php?text=<?PHP echo ucwords(str_replace('_', ' ', strtolower($headline))); ?>" alt="Contentbox headline">
                                 <div class="Border_2">
@@ -617,7 +631,9 @@ if(!defined('INITIALIZED'))
                 </div>
 
                                     <?php
-                                    } ?>
+                                    } 
+                                        if ($config['site']['ThemeBoxPremium'] == true){
+                                    ?>
                                     <!-- premium theme box -->
                                     <style>
                                         .ribbon-double {
@@ -655,7 +671,7 @@ if(!defined('INITIALIZED'))
                                     </div>
                                     <!-- Facebook theme box -->
                                     <?php
-                                        if($config['site']['NetworksBanner'] == true){
+                                        }if($config['site']['NetworksBanner'] == true){
                                     ?>
                                     <div id="NetworksBox" class="Themebox" style="background-image:url(<?php echo $layout_name; ?>/images/global/themeboxes/networks/networksbox.png);">
                                         <div id="FacebookBlock" >

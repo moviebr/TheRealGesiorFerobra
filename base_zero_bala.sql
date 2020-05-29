@@ -2341,3 +2341,15 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2018-07-03 23:19:56
+
+-- Fixado guilds.php
+DROP TRIGGER IF EXISTS `oncreate_guilds`;
+DELIMITER //
+CREATE TRIGGER `oncreate_guilds` AFTER INSERT ON `guilds`
+ FOR EACH ROW BEGIN
+    INSERT INTO `guild_ranks` (`name`, `level`, `guild_id`) VALUES ('the Leader', 3, NEW.`id`);
+    INSERT INTO `guild_ranks` (`name`, `level`, `guild_id`) VALUES ('a Vice-Leader', 2, NEW.`id`);
+    INSERT INTO `guild_ranks` (`name`, `level`, `guild_id`) VALUES ('a Member', 1, NEW.`id`);
+END
+//
+DELIMITER ;

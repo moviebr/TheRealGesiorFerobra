@@ -4155,7 +4155,7 @@ else {
 										<div class="InnerTableContainer" >
 											<table style="width:100%;" >
 												<tr>
-													<td>Your donation has been successfully confirmed. In 24 hours your coins will be credited </td>
+													<td>Your donation has been successfully confirmed. In 24 hours your points will be credited </td>
 												</tr>
 											</table>
 										</div>
@@ -4311,7 +4311,7 @@ else {
 																	<td class="LabelV">Status</td>
 																	<td class="LabelV"></td>
 																</tr>';
-        if (count($getHistoryDonate[0]) > 0) {
+        if ($getHistoryDonate[0] > 0) {
             $n = 0;
             foreach ($getHistoryDonate as $doHistory) {
                 $bgcolor = (($n++ % 2 == 1) ? $config['site']['darkborder'] : $config['site']['lightborder']);
@@ -4373,7 +4373,7 @@ else {
         $donateID = (int)$_REQUEST['id'];
         $getDonate = $SQL->query("SELECT * FROM `z_shop_donates` WHERE `id` = '$donateID'")->fetchAll();
 
-        if (count($getDonate[0]) == 0) {
+        if ($getDonate[0] == 0) {
             $main_content .= '
 				<div class="TableContainer" >
 					<table class="Table1" cellpadding="0" cellspacing="0" >
@@ -4383,7 +4383,7 @@ else {
 								<span class="CaptionEdgeRightTop" style="background-image:url(' . $layout_name . '/images/global/content/box-frame-edge.gif);" /></span>
 								<span class="CaptionBorderTop" style="background-image:url(' . $layout_name . '/images/global/content/table-headline-border.gif);" ></span> 
 								<span class="CaptionVerticalLeft" style="background-image:url(' . $layout_name . '/images/global/content/box-frame-vertical.gif);" /></span>							
-								<div class="Text" >Send Coins Errors</div>
+								<div class="Text" >Send Points Errors</div>
 								<span class="CaptionVerticalRight" style="background-image:url(' . $layout_name . '/images/global/content/box-frame-vertical.gif);" /></span>
 								<span class="CaptionBorderBottom" style="background-image:url(' . $layout_name . '/images/global/content/table-headline-border.gif);" ></span> 
 								<span class="CaptionEdgeLeftBottom" style="background-image:url(' . $layout_name . '/images/global/content/box-frame-edge.gif);" /></span>
@@ -4860,6 +4860,7 @@ else {
                     $char_to_copy->setLookType(136);
                     $char_to_copy->setID(null); // save as new character
                     $char_to_copy->setLastIP(0);
+                    $char_to_copy->setHidden(0);
                     $char_to_copy->setLastLogin(0);
                     $char_to_copy->setLastLogout(0);
                     $char_to_copy->setName($newchar_name);
