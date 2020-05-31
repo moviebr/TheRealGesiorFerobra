@@ -8,6 +8,7 @@ if(!defined('INITIALIZED'))
     <meta charset="utf-8">
     <title><?=$config['server']['serverName']?> - Free Multiplayer Online Role Playing Game</title>
     <meta http-equiv="content-language" content="pt-br">
+    <meta name="author" content="Movie & Elephant">
     <meta name="keywords" content="free online game, free multiplayer game, free online rpg, free mmorpg, mmorpg, mmog, online role playing game, online multiplayer game, internet game, online rpg, rpg">
 
     <!--  regular browsers -->
@@ -109,9 +110,7 @@ if(!defined('INITIALIZED'))
                         <a href="./?subtopic=latestnews">
                             <img id="TibiaLogoArtworkTop"
                                  src="<?php echo $layout_name; ?>/images/global/header/tibia-logo-artwork-top.gif"
-                                 alt="logoartwork"
-                                 name="Ferobra Global"
-                            >
+                                 alt="logoartwork">
                         </a>
                     </div>
 
@@ -631,8 +630,26 @@ if(!defined('INITIALIZED'))
                 </div>
 
                                     <?php
-                                    } 
-                                        if ($config['site']['ThemeBoxPremium'] == true){
+                                    	} if ($config['site']['ThemeBoxCastle'] == true){
+                                    		$castle = $SQL->query('SELECT * FROM castle')->fetch();
+                                    		$castleId = $castle['guild_id'];
+											if ($castleId == -1){
+                                    ?>
+                                    <div class="castleBox">
+                                    	<IMG class="castleFoto" SRC="images/guildlogos/default_logo.gif"><br/>
+                                    	<span class="castleName" style="right: -35px;">Castelo sem domínio</span>
+                                    </div>
+
+                                <?php } else{
+                                $guildLogo = $SQL->query('SELECT * FROM `guilds` WHERE id = (SELECT guild_id FROM castle)')->fetch()['id'];
+                                $castleName = $castle['name'];
+                                	?>
+                                	<div class="castleBox">
+                                    	<IMG class="castleFoto" SRC="guild_image.php?id=<?=$guildLogo?>"><br/>
+                                    	<div class="castleName"><center><a style="color: white;" href="?subtopic=guilds&action=view&GuildName=<?=$castleName?>"><?=$castleName?></a></center></div>
+                                    </div>
+                                    <?php
+                                        }}if ($config['site']['ThemeBoxPremium'] == true){
                                     ?>
                                     <!-- premium theme box -->
                                     <style>
@@ -716,8 +733,9 @@ if(!defined('INITIALIZED'))
 
                             <div id="Footer">
                                 <script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
-                                Copyright by <a href="https://www.cipsoft.com" target="_new"><b>CipSoft GmbH</b></a>. All rights reserveds<br>
-                                <a href=?subtopic=forum><b>Game Forum</b></a> | <a href=<?php echo $config['social']['facebook']; ?>><b>Facebook</b></a> | <a href=?subtopic=team><b>Support Game</b></a><br>
+                                Copyright by <a href="https://www.cipsoft.com" target="_new"><b>CipSoft GmbH</b></a>. All rights reserveds<br/>
+                                <a href=?subtopic=forum><b>Game Forum</b></a> | <a href=<?php echo $config['social']['facebook']; ?>><b>Facebook</b></a> | <a href=?subtopic=team><b>Support Game</b></a><br/>
+                                Edited by <a href="https://github.com/moviebr" target="_blank"><b>Movie</b></a>
                             </div>
                         </div>
                     </div>
