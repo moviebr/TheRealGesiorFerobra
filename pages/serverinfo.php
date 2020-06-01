@@ -87,6 +87,7 @@ if($action == "") {
 				</tbody>
 			</table>
 		</div><br>';
+	if ($config['site']['ShopSystem'] == true){
 		$main_content .= '
 		<div class="TableContainer">
 			<div class="CaptionContainer">
@@ -141,7 +142,7 @@ if($action == "") {
 				</tbody>
 			</table>
 		</div>';
-}
+}}
 if($action == "tutorialdonate") {
 	$main_content .= '
 		<script src="'.$layout_name.'/fancy/jquery.fancybox.js"></script>

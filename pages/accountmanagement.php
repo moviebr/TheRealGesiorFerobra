@@ -126,7 +126,8 @@ if (!$logged)
 															</tr>
 														</table>
 													</div>
-												</div>
+												</div>';
+		$main_content .='
 												<div class="TableShadowContainer" >
 													<div class="TableBottomShadow" style="background-image:url(' . $layout_name . '/images/global/content/table-shadow-bm.gif);" >
 														<div class="TableBottomLeftShadow" style="background-image:url(' . $layout_name . '/images/global/content/table-shadow-bl.gif);" ></div>
@@ -172,7 +173,7 @@ if (!$logged)
 				</tr>	
 				<br/>';
 				
-	$main_content .='
+	/*$main_content .='
 					<center>
 					<h1>Do you have a Facebook profile?</h1>
 				</center>
@@ -229,7 +230,7 @@ if (!$logged)
 				</tr>
 	';
 				
-	$main_content .='
+	*/$main_content .='
 				<center>
 					<h1>New to ' . $config['server']['serverName'] . '?</h1>
 				</center>
@@ -396,6 +397,7 @@ else {
 																					</div>
 																				</div>
 																			</form>';
+	if ($config['site']['ShopSystem'] == true){
         $main_content .= '
 																			<div style="font-size:1px;height:4px;"></div>
 																				<form action="?subtopic=accountmanagement&action=donate" method="post" style="padding:0px;margin:0px;">
@@ -405,6 +407,7 @@ else {
 																						</div>
 																					</div>
 																				</form>';
+	}
         if ($group_id_of_acc_logged >= $config['site']['access_admin_panel']) {
             $main_content .= '
 																				<div style="font-size:1px;height:4px;"></div>
@@ -998,7 +1001,11 @@ else {
 						<div class="BoxFrameVerticalLeft" style="background-image:url(' . $layout_name . '/images/global/content/box-frame-vertical.gif);" /></div>
 						<div class="BoxFrameVerticalRight" style="background-image:url(' . $layout_name . '/images/global/content/box-frame-vertical.gif);" /></div>
 						<table style="width:100%;" >
-							<td style="width:100%;text-align:center;" ><nobr>[<a href="#General+Information" >General Information</a>]</nobr> <nobr>[<a href="#Donates" >Donates</a>]</nobr> ' . ((count($getProdutsCat) >= 1) ? '<nobr>[<a href="#Products+Available" >Products Available</a>]</nobr>' : '') . ' <nobr>[<a href="#Products+Ready+To+Use" >Products Ready To Use</a>]</nobr> <nobr>[<a href="#History" >History</a>]</nobr> <nobr>[<a href="#Registration" >Registration</a>]</nobr></td>
+							<td style="width:100%;text-align:center;" ><nobr>[<a href="#General+Information" >General Information</a>]</nobr> '; 
+							if ($config['site']['ShopSystem'] == true){
+								$main_content .= '<nobr>[<a href="#Donates" >Donates</a>]</nobr>';
+							}
+								$main_content .= '' . ((count($getProdutsCat) >= 1) ? '<nobr>[<a href="#Products+Available" >Products Available</a>]</nobr>' : '') . ' <nobr>[<a href="#Products+Ready+To+Use" >Products Ready To Use</a>]</nobr> <nobr>[<a href="#History" >History</a>]</nobr> <nobr>[<a href="#Registration" >Registration</a>]</nobr></td>
 							<td>
 								<table border="0" cellspacing="0" cellpadding="0" >
 									<form action="?subtopic=accountmanagement" method="post" >
@@ -1124,9 +1131,11 @@ else {
             $getServiceInfo = $SQL->query("SELECT `count` FROM `z_shop_offer` WHERE `id` = '" . $last_points_bought['service_id'] . "'")->fetch();
             $main_content .= '
 															<small>(Your last donation was on ' . date("M d Y", strtotime($last_points_bought['data'])) . '. You donated to get ' . $last_points_bought['item_count'] . ' Premium Points.)</small>';
-        } else
+        } else{
+        if ($config['site']['ShopSystem'] == true){
             $main_content .= '
 																<small>(You have not donated to get premium points yet. <a href="?subtopic=accountmanagement&action=donate" title="Buy now!">Buy now!</a>)</small>';
+															}}
         $main_content .= '
 															</td>
 														</tr>';
@@ -1293,7 +1302,7 @@ else {
 				</table>
 			</div>
 				<br>';*/
-
+if ($config['site']['ShopSystem'] == true){
         $main_content .= '
 			<a name="Donates" ></a>
 			<div class="TopButtonContainer" >
@@ -1418,7 +1427,8 @@ else {
 				</td>
 			</tr>
 			<br/>';
-
+}
+if ($config['site']['ShopSystem'] == true){
         $main_content .= '
 			<a name="Products+Available" ></a>
 			<div class="TopButtonContainer" >
@@ -1496,7 +1506,7 @@ else {
 				</td>
 			</tr>
 			<br/>';
-
+}
         $main_content .= '
 			<a name="Products+Ready+To+Use" ></a>
 			<div class="TopButtonContainer" >

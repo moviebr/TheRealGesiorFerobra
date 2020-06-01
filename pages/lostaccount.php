@@ -432,7 +432,7 @@ if ($config['site']['send_emails']) {
                 $acceptedChars = '123456789zxcvbnmasdfghjklqwertyuiop';
                 $newcode = NULL;
                 for ($i = 0; $i < 20; $i++) {
-                    $cnum[$i] = $acceptedChars{mt_rand(0, 33)};
+                    $cnum[$i] = $acceptedChars[mt_rand(0, 33)];
                     $newcode .= $cnum[$i];
                 }
                 
@@ -676,7 +676,7 @@ if ($config['site']['send_emails']) {
                 $acceptedChars = '123456789zxcvbnmasdfghjklqwertyuiop';
                 $newpass = NULL;
                 for ($i = 0; $i < 8; $i++) {
-                    $cnum[$i] = $acceptedChars{mt_rand(0, 33)};
+                    $cnum[$i] = $acceptedChars[mt_rand(0, 33)];
                     $newpass .= $cnum[$i];
                 }
                 
@@ -807,7 +807,7 @@ if ($config['site']['send_emails']) {
                 $acceptedChars = '123456789zxcvbnmasdfghjklqwertyuiop';
                 $newcode = NULL;
                 for ($i = 0; $i < 20; $i++) {
-                    $cnum[$i] = $acceptedChars{mt_rand(0, 33)};
+                    $cnum[$i] = $acceptedChars[mt_rand(0, 33)];
                     $newcode .= $cnum[$i];
                 }
                 
@@ -982,7 +982,7 @@ if ($config['site']['send_emails']) {
                 $acceptedChars = '123456789zxcvbnmasdfghjklqwertyuiop';
                 $newpass = NULL;
                 for ($i = 0; $i < 8; $i++) {
-                    $cnum[$i] = $acceptedChars{mt_rand(0, 33)};
+                    $cnum[$i] = $acceptedChars[mt_rand(0, 33)];
                     $newpass .= $cnum[$i];
                 }
                 

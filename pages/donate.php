@@ -6,6 +6,30 @@ if($logged) {
 	
 	#Progress bar
 	# Donate of 5 steps
+
+if($config['site']['ShopSystem'] == true) {
+
+}else{
+	$main_content .= '
+					<TABLE BORDER=0 WIDTH=100%>
+						<TR>
+							<TD ALIGN=center>
+								<table border="0" cellspacing="0" cellpadding="0" >
+									<form action="?subtopic=accountmanagement&action=manage" method="post">
+										<tr>
+											<td style="border:0px;" ><div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton.gif)" >
+													<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_over.gif);" ></div>
+														<input class="ButtonText" type="image" name="Back" alt="Back" src="'.$layout_name.'/images/global/buttons/_sbutton_back.gif" >
+													</div>
+												</div>
+											</td>
+										</tr>
+									</form>
+								</table>
+							</TD>
+						</TR>
+					</TABLE>';
+}
 	
 	if(!isset($_REQUEST['step']) || $_REQUEST['step'] == "")
 		$step = 1;

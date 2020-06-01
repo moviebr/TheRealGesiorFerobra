@@ -7,41 +7,9 @@
  */
 
 $outfits = new Outfits();
-$mounts = new Mounts();
 $items = new New_items();
 
-/**
- * @param $player_id
- * @return array|bool
- */
-$getPlayerMountsByPlayerId = function ($player_id) use ($mounts) {
-    $player = new Player();
-    $player->loadById($player_id);
-    
-    $p = [];
-    for ($i = 0; $i < 10; $i++) {
-        $var = (10000000 + 2001);
-        $var = $var + $i;
-        if ($player->getStorage($var) != NULL) {
-            $p[$i]['key'] = $var;
-            $p[$i]['storage'] = $player->getStorage($var);
-        }
-    }
-    if ($p != NULL) {
-        foreach ($p as $storages) {
-            $teste = $mounts->getMountsByKey($storages['key']);
-            foreach ($teste as $mount) {
-                if (((1 << (($mount['id'] - 1) % 31)) & $storages['storage'])) {
-                    $top = $mounts->getMountsById($mount['id']);
-                    $kappa[] = $top;
-                }
-            }
-        }
-        return $kappa;
-    } else {
-        return FALSE;
-    }
-};
+
 /**
  * @param $player_id
  * @return array|bool

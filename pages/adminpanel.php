@@ -690,7 +690,7 @@ if($logged)
 																$main_content .= '
 																	<tr bgcolor="'.$bgcolor.'">
 																		<td>'.date("M d Y, G:i:s", $order['date']).'</td>
-																		<td>'.$order['premium_points'].' Premium Points</td>
+																		<td>'.$order['points'].' Premium Points</td>
 																		<td>'.$order['price'].' BRL</td>
 																		<td>'.$order['method'].'</td>';
 																		$bankref = explode("-",$order['reference']);
@@ -1681,13 +1681,13 @@ if($logged)
 																			<td>"<i>'.$getorderInfo['msg'].'</i>"</td>
 																		</tr>
 																		<tr bgcolor="'.$config['site']['lightborder'].'">
-																			<td class="LabelV">Send '.(($doubleStatus['value'] == "active") ? (2 * $getpayInfo['premium_points']) : $getpayInfo['premium_points']).' premium points to account '.$getpayInfo['account_name'].' ?</td>
+																			<td class="LabelV">Send '.(($doubleStatus['value'] == "active") ? (2 * $getpayInfo['points']) : $getpayInfo['points']).' premium points to account '.$getpayInfo['account_name'].' ?</td>
 																			<td>																			
 																				<table border="0" cellspacing="0" cellpadding="0" >
 																					<form action="?subtopic=adminpanel&action=sendPoints" method="post">
 																						<input type="hidden" name="orderID" value="'.$orderID.'">
 																						<input type="hidden" name="orderAccName" value="'.$getpayInfo['account_name'].'">
-																						<input type="hidden" name="orderPoints" value="'.$getpayInfo['premium_points'].'">
+																						<input type="hidden" name="orderPoints" value="'.$getpayInfo['points'].'">
 																						<input type="hidden" name="confirm" value="yes">
 																						<tr>
 																							<td style="border:0px;" ><div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)" >
@@ -1817,7 +1817,7 @@ if($logged)
 																	<tr bgcolor="'.$config['site']['lightborder'].'">
 																		<td width="46%">'.$g_extra['offer_name'].'</td>
 																		<td>
-																			<input type="number" name="extraValue" value="'.$g_extra['premium_points'].'" '.(($g_extra['hide'] == 1) ? 'disabled' : '').'>
+																			<input type="number" name="extraValue" value="'.$g_extra['points'].'" '.(($g_extra['hide'] == 1) ? 'disabled' : '').'>
 																			<input type="submit" name="extraUpdate" id="extraUpdate" value="Update" '.(($g_extra['hide'] == 1) ? 'disabled' : '').'>
 																			<input type="hidden" name="offerID" value="'.$g_extra['id'].'">
 																		</td>

@@ -340,6 +340,7 @@ if(!defined('INITIALIZED'))
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
+                                <?php if ($config['site']['send_emails'] == true) { ?>
                                 <a href="?subtopic=lostaccount">
                                     <div id="submenu_lostaccount" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
@@ -348,6 +349,7 @@ if(!defined('INITIALIZED'))
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
+                            <?php } ?>
                             </div>
                         </div>
 
@@ -440,6 +442,9 @@ if(!defined('INITIALIZED'))
 							<?php } ?>
                             </div>
                         </div>
+                        <?php 
+								if ($config['site']['ShopSystem'] == true){
+									?>
                         <div id="shop" class="menuitem">
 								<span onclick="MenuItemAction('shop')">
   									<div class="MenuButton" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/button-background.gif);">
@@ -456,7 +461,9 @@ if(!defined('INITIALIZED'))
   									</div>
 								</span>
                             <div id="shop_Submenu" class="Submenu">
-                                <?php if (isset($_SESSION['account'])){?>
+                                <?php 
+                                		if (isset($_SESSION['account'])){
+                                	?>
                                     <a href="?subtopic=accountmanagement&action=services&ServiceCategoryID=2">
                                         <div id="submenu_shop" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                             <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
@@ -479,7 +486,7 @@ if(!defined('INITIALIZED'))
                                     <div id="submenu_donate" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                         <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         <div id="ActiveSubmenuItemIcon_donate" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                        <div id="ActiveSubmenuItemLabel_donate" class="SubmenuitemLabel">Doar</div>
+                                        <div id="ActiveSubmenuItemLabel_donate" class="SubmenuitemLabel">Donate</div>
                                         <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                     </div>
                                 </a>
@@ -488,17 +495,19 @@ if(!defined('INITIALIZED'))
                                         <div id="submenu_tankyou" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
                                             <div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                             <div id="ActiveSubmenuItemIcon_tankyou" class="ActiveSubmenuItemIcon" style="background-image:url(<?php echo $layout_name; ?>/images/global/menu/icon-activesubmenu.gif);"></div>
-                                            <div id="ActiveSubmenuItemLabel_tankyou" class="SubmenuitemLabel">Obrigado!</div>
+                                            <div id="ActiveSubmenuItemLabel_tankyou" class="SubmenuitemLabel">Thank You!</div>
                                             <div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
                                         </div>
                                     </a>
                                 <?php } ?>
                             </div>
                         </div>
+                        <?php } ?>
                         <div id="MenuBottom" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/box-bottom.gif);"></div>
                     </div>
                     <script>InitializePage();</script>
                 </div>
+
 
                 <div id="ContentColumn">
                     <div id="Content" class="Content">

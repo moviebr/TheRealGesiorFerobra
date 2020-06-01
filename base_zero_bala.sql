@@ -2342,7 +2342,14 @@ UNLOCK TABLES;
 
 -- Dump completed on 2018-07-03 23:19:56
 
--- Novos comandos by Movie
+-- New commands by Movie
+CREATE TABLE IF NOT EXISTS `castle` (
+  `name` varchar(255) NOT NULL, 
+  `guild_id` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `castle` (`name`, `guild_id`) VALUES ('Guild', '-1');
+
 INSERT INTO `z_shop_category` (`id`, `name`, `desc`, `button`, `hide`) VALUES
 (2, 'Extra Services', 'Buy an extra service to transfer a character to another game world, to change your character name or sex, to change your account name, or to get a new recovery key.', '_sbutton_getextraservice.gif', 0),
 (3, 'Outfits', 'Buy your characters one or more of the fancy outfits offered here.', '_sbutton_getoutfit.gif', 1),
