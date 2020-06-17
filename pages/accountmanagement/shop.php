@@ -347,7 +347,7 @@ if(!defined('INITIALIZED'))
 																				$main_content .= '
 																					<div class="RibbonNewProduct" style="background-image: url('.$layout_name.'/images/payment/ribbon-new-product.png);"></div>
 																					<div class="PermanentDeactivated" >
-																						<span class="HelperDivIndicator" onMouseOver="ActivateHelperDiv($(this), \'New Product!\', \'We have a new product for you in store - the &lt;b&gt;'.$product['offer_name'].'&lt;/b&gt;.\', \'\');" onMouseOut="$(\'#HelperDivContainer\').hide();" >
+																						<span class="HelperDivIndicator" onMouseOver="ActivateHelperDiv($(this), \'New Product!\', \'We have a new product for you in store - the &lt;b&gt;'.$product['offer_name'].'&lt;/b&gt;.<br/><br/>'.$product['offer_description'].'\', \'\');" onMouseOut="$(\'#HelperDivContainer\').hide();" >
 																							<div class="ServiceID_HelperDiv" style="z-index: 999;" ></div>
 																						</span>
 																					</div>';
