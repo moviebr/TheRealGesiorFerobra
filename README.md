@@ -6,9 +6,6 @@
 
 Confira o projeto em [Ferobra](https://ferobraglobal.com) 
 > **Lembrando que esse repositório não está com a ultima versão do Ferobra.**
-### Entre em contato
-> +55 (62) 9 9934-0570. ![whatsapp](https://cdn.icon-icons.com/icons2/373/PNG/32/Whatsapp_37229.png) <br>
-> Ricardo Souza#8938 Discord
 
 #### PT-BR
 * Bem vindo ao tutorial de instalação desse lindo website feito com amor e carinho pra vcs meus queridos tibianos.
